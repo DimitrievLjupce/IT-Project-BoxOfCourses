@@ -1,0 +1,143 @@
+﻿@model BoxOfCourses.Models.Course
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<div class="container cont">
+    <h2 class="createCourseHeading">Create <span class="new-course-heading">new </span>course</h2>
+
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <hr class="hr-create" />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2", id = "modelNameCreate" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", placeholder = "example. Java" } })
+                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Category, htmlAttributes: new { @class = "control-label col-md-2", id = "modelCategoryCreate" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(model => model.Category, new SelectList(Model.Categories), new { @class = "form-control" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Level, new { @class = "control-label col-md-2", id = "modelLevelCreate" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(model => model.Level, new SelectList(Model.Levels), new { @class = "form-control " })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ImageURL, htmlAttributes: new { @class = "control-label col-md-2", id = "modelImageCreate" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.ImageURL, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ImageURL, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.VideoURL, htmlAttributes: new { @class = "control-label col-md-2", id = "modelVideoCreate" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.VideoURL, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.VideoURL, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Type, new { @class = "control-label col-md-2", id = "modelTypeCreate" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(model => model.Type, new SelectList(Model.Types), new { @class = "form-control" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <a href="~/Courses/Index" id="backToList" class="btn btn-warning">Back to the list</a>
+                    <input type="submit" value="Create" class="btn btn-success" style="color:black; width: 160px" />
+                </div>
+            </div>
+        </div>
+    }
+
+
+    <!--<div>-->
+    @*@Html.ActionLink("Back to List", "Index")*@
+    <!--<a href="~/Courses/Index" id="backToList" class="btn btn-warning ">Back to the list of Courses</a>
+    </div>-->
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+<style>
+    .cont {
+        padding-top: 100px;
+        padding-bottom: 50px;
+    }
+
+    #modelNameCreate {
+        color: #5ABD64;
+        font-size: 18px;
+        font-weight: 600;
+    }
+
+    #modelCategoryCreate {
+        color: #5ABD64;
+        font-size: 18px;
+        font-weight: 600;
+    }
+
+    #modelLevelCreate {
+        color: #5ABD64;
+        font-size: 18px;
+        font-weight: 600;
+    }
+
+    #modelImageCreate {
+        color: #5ABD64;
+        font-size: 18px;
+        font-weight: 600;
+    }
+
+    #modelVideoCreate {
+        color: #5ABD64;
+        font-size: 18px;
+        font-weight: 600;
+    }
+
+    #modelTypeCreate {
+        color: #5ABD64;
+        font-size: 18px;
+        font-weight: 600;
+    }
+
+    #backToList {
+        color: black;
+    }
+
+    .createCourseHeading {
+        color: white;
+    }
+
+    .new-course-heading {
+        color: #5ABD64;
+        font-size: 35px;
+    }
+
+    .hr-create {
+        border: 1px solid #303641;
+    }
+       
+</style>

@@ -1,0 +1,455 @@
+﻿@model IEnumerable<BoxOfCourses.Models.Course>
+
+@{
+    ViewBag.Title = "All Courses";
+}
+
+<div class="container-fluid cont-fluid">
+    <div class="carousel-container">
+        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+
+            <ol class="carousel-indicators">
+                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="4"></li>
+            </ol>
+
+            <div class="carousel-inner" role="listbox">
+                @*<div class="item active">
+                        <img class="carousel-img img-responsive" src="~/Content/photos/carousel-1.png">
+                    </div>
+
+                    <div class="item">
+                        <img class="carousel-img img-responsive" src="~/Content/photos/carousel-second.png">
+                        <div class="carousel-caption">
+                            <h4 class="h4-black">Want to learn more?</h4>
+                            <p class="p-green">You're on the right path!</p>
+                        </div>
+                    </div>
+
+                    <div class="item">
+                        <img class="carousel-img img-responsive" src="~/Content/photos/carousel-third.png">
+                    </div>*@
+
+
+                @*<div class="item active">
+                        <img class="carousel-img img-responsive" src="~/Content/photos/image 2.jpg">
+                    </div>
+                    <div class="item">
+                        <img class="carousel-img img-responsive" src="~/Content/photos/image 3.jpg">
+                    </div>
+
+                    <div class="item">
+                        <img class="carousel-img img-responsive" src="~/Content/photos/image 4.jpg">
+                    </div>
+
+                    <div class="item">
+                        <img class="carousel-img img-responsive" src="~/Content/photos/image 5.jpg">
+                    </div>
+
+                    <div class="item">
+                        <img class="carousel-img img-responsive" src="~/Content/photos/image 6.jpg">
+                    </div>*@
+
+                <div class="item active">
+                    <img class="carousel-img img-responsive" src="~/Content/carousel-images/img-3.jpg">
+                </div>
+                <div class="item ">
+                    <img class="carousel-img img-responsive" src="~/Content/carousel-images/img-2.jpg">
+                </div>
+                <div class="item">
+                    <img class="carousel-img img-responsive" src="~/Content/carousel-images/img-4.jpg">
+                </div>
+                <div class="item">
+                    <img class="carousel-img img-responsive" src="~/Content/carousel-images/img-5.jpg">
+                </div>
+
+                <div class="item">
+                    <img class="carousel-img img-responsive" src="~/Content/carousel-images/img-7.jpg">
+                </div>
+                <div class="item">
+                    <img class="carousel-img img-responsive" src="~/Content/carousel-images/img-8.jpg">
+                </div>
+
+
+            </div>
+
+            <!-- Controls -->
+            <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+
+            <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </div>
+</div>
+<div class="container cont">
+    <a class="btnn" href="#">
+        <div class="div4e"><h2 class="RecommendedCourses btn__label ">Recommended courses from the <span class="text-green-400">BOX</span></h2></div>
+    </a>
+    <p>
+        @Html.ActionLink("Create new Course", "Create", "Course", new { @class = "btn btn-success CreateNewCourseButton" })
+    </p>
+
+    <table id="CoursesTable" class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Category)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Level)
+                </th>
+                <th class="text-center">
+                    Image
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Type)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td class="courseNameCoulmn">
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td class="courseCategoryCoulmn">
+                        @Html.DisplayFor(modelItem => item.Category)
+                    </td>
+                    <td id="courseLevelColumn" class="course-level-column">
+                        @Html.DisplayFor(modelItem => item.Level, new { @class = "course-level" })
+                    </td>
+                    <td class="text-center">
+                        <img class="image" style="max-width: 150px; max-height: 120px" src="@Html.DisplayFor(modelItem => item.ImageURL)" />
+                    </td>
+                    <td class="courseTypeCoulmn">
+                        @Html.DisplayFor(modelItem => item.Type, new { @class = "modelType" })
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-info editcourseButton" }) <span class="vertical-line-between">|</span>
+                        @Html.ActionLink("Take course", "Details", new { id = item.Id, @class = "takeCourse" }, new { @class = "btn btn-success takecourseButton" }) <span class="vertical-line-between">|</span>
+                        @* @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger deletecourseButton" })*@
+                        <button data-course-name="@item.Name" data-course-id="@item.Id" class="btn btn-danger js-delete">Delete</button>
+                    </td>
+                    @*<img src="~/Content/photos/delete.jpg" style="width:50px; height:50px;">*@
+                </tr>
+            }
+        </tbody>
+    </table>
+
+
+</div>
+
+<div class="container-fluid">
+    <div class="icon-bar-index-table text-right icon-bar-social-links-index-table">
+        <a class="social-links-icons-a icon-instagram" href="https://www.finki.ukim.mk/" target="_blank"><ion-icon class="icon-instagram" name="logo-instagram"></ion-icon></a>
+        <a class="social-links-icons-a" href="https://www.finki.ukim.mk/" target="_blank"><ion-icon class="icon-youtube" name="logo-youtube"></ion-icon></a>
+        <a class="social-links-icons-a" href="https://www.finki.ukim.mk/" target="_blank"><ion-icon class="icon-twitter" name="logo-twitter"></ion-icon></a>
+        <a class="social-links-icons-a" href="https://github.com/DimitrievLjupce" target="_blank"><ion-icon class="icon-github" name="logo-github"></ion-icon></a>
+    </div>
+</div>
+
+<style>
+    .cont {
+        padding-top: 20px;
+    }
+
+    .carousel-container{
+        padding-top: 34px;
+    }
+    .carousel .carousel-indicators li {
+        background-color: #fff;
+        background-color: rgba(70,70,70,.25);
+    }
+
+    .carousel .carousel-indicators .active {
+        background-color: #444;
+    }
+
+    /* Only for beautify example */
+
+
+    .carousel-inner{
+        height: 400px;
+    }
+    .carousel-img {
+        width: 100%;
+        height: 100%;
+        max-height: 300px;
+    }
+
+    .cont-fluid {
+        padding: 0;
+    }
+
+    .h4-black {
+        color: black;
+        font-size: 30px;
+        font-weight: 600
+    }
+
+    .p-green {
+        color: green;
+        font-style: italic;
+    }
+
+    .RecommendedCourses {
+        color: white;
+        font-weight: 700;
+        padding: 15px;
+        border-radius: 8px;
+        font-family: Arial;
+        align-content: center;
+    }
+
+    th {
+        color: #6A746B;
+    }
+
+    .courseNameCoulmn {
+        color: #5ABD64;
+        font-weight: 600;
+        font-size: 20px;
+    }
+
+    .courseCategoryCoulmn {
+        color: white;
+        font-size: 15px;
+    }
+
+    .takeCourse {
+        color: green;
+    }
+
+    .courseTypeCoulmn {
+        color: #D83319;
+        font-size: 15px;
+        font-weight: bolder;
+    }
+
+    .takecourseButton {
+        color: black;
+        font-size: 15px;
+        font-weight: 500;
+    }
+
+    .editcourseButton {
+        color: black;
+        font-size: 15px;
+        font-weight: 500;
+    }
+
+    .deletecourseButton {
+        background-color: #E0634F !important;
+        color: black;
+        font-size: 15px;
+        font-weight: 500;
+    }
+
+    .vertical-line-between {
+        color: #303641;
+        font-size: 25px;
+    }
+
+    .text-green-400 {
+        color: #5ABD64;
+        font-weight: 700;
+    }
+
+    .CreateNewCourseButton {
+        width: 200px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        color: black;
+    }
+
+
+    @*od tuka*@
+
+    .btnn:link,
+    .btnn:visited {
+        position: relative;
+        display: flex;
+        color: black;
+        text-decoration: none;
+        background: rgba(255, 255, 255, .05);
+        border: 2px solid #5ABD64;
+        transform: skewX(-20deg);
+        transition: .3s all;
+    }
+
+    .btnn:hover,
+    .btnn:active {
+        background: rgba(255, 255, 255, .1);
+        cursor: pointer;
+    }
+
+    .btnn {
+      transform: skewX(20deg);
+    }
+
+/* Electrons */
+
+    .btnn::before,
+    .btnn::after {
+        content: "";
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        background: green;
+        border-radius: 100%;
+        transform: skewX(20deg);
+        animation: 4s linear 0s infinite;
+        text-align: center;
+    }
+
+    .btnn::before {
+        top: -6px;
+        left: -6px;
+        animation-name: electron1;
+    }
+
+    .btnn::after {
+        left: calc(100% - 4px);
+        top: calc(100% - 4px);
+        animation-name: electron2;
+    }
+
+
+/* Hover */
+
+    .btnn:hover::before,
+    .btnn:hover::after,
+    .btnn:active::before,
+    .btnn:active::after {
+        animation-play-state: paused;
+    }
+
+    .btnn {
+        pointer-events: none;
+    }
+
+    .btn__label{
+        text-align: center;
+    }
+
+
+    @*tuka za social links*@
+    .icon-bar-social-links-index-table {
+        position: fixed;
+        bottom: 30%;
+        right: 5%;
+        -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+    }
+
+/* Style the icon bar links */
+    .icon-bar-index-table ion-icon {
+        display: block;
+        text-align: center;
+        padding: 16px;
+        transition: all 0.3s ease;
+        font-size: 35px;
+        position: relative;
+        cursor: pointer;
+    }
+    .icon-bar-index-table {
+        margin-top: 620px;
+    }
+
+    .social-links-icons-a {
+        color: #6A746B;
+    }
+
+    .icon-youtube:hover {
+        color: red;
+    }
+
+    .icon-instagram:hover {
+        color: #E1306C;
+    }
+
+    .icon-twitter:hover {
+        color: #1DA1F2;
+    }
+
+    .icon-github:hover {
+        color: black;
+    }
+</style>
+
+@section scripts{
+    <script>
+        @*$(document).ready(function () {
+            var table = $("#CoursesTable").DataTable();
+            $("#CoursesTable .js-delete").on("click", function () {
+                var button = $(this);
+                bootbox.confirm("Are you sure you want to delete this course?", function (result) {
+                    if (result) {
+                        $.ajax({
+                            url: "/Courses/Delete/" + button.attr("data-course-id"),
+                            method: "GET",
+                            success: function () {
+                                table.row(button.parents("tr")).remove().draw();
+                            },
+                            error: function (err) {
+                                console.log(err);
+                            }
+                        })
+                    }
+                })
+            })
+
+        });*@
+
+
+        $(document).ready(function () {
+            var table = $("#CoursesTable").DataTable();
+            $("#CoursesTable .js-delete").on("click", function () {
+                var button = $(this);
+                bootbox.confirm({
+                    message: "Are you sure you want to delete the " + button.attr("data-course-name") + " course?",
+                    buttons: {
+                        confirm: {
+                            label: 'Yes',
+                            className: 'btn-success'
+                        },
+                        cancel: {
+                            label: 'No',
+                            className: 'btn-danger'
+                        }
+                    },
+                    callback: function (result) {
+                        if (result) {
+                            $.ajax({
+                                url: "/Courses/Delete/" + button.attr("data-course-id"),
+                                method: "GET",
+                                success: function () {
+                                    table.row(button.parents("tr")).remove().draw();
+                                },
+                                error: function (err) {
+                                    console.log(err);
+                                }
+                            })
+                        }
+                        @* console.log('This was logged in the callback: ' + result);*@
+                    }
+                });
+            })
+        });
+
+    </script>
+}

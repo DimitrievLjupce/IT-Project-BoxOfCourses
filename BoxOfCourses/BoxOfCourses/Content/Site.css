@@ -1,0 +1,243 @@
+﻿body {
+    padding-top: 3rem;
+    padding-bottom: 2rem;
+    background-color: #1a202c;
+}
+
+/* Set padding to keep content from hitting the edges */
+/*
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+*/
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+#registerLink {
+    color: #6A746B;
+    border: 1px solid #6A746B;
+    border-radius: 10px;
+    padding-top: 15px;
+    margin-top: 5px;
+}
+#loginLink {
+    color: #5ABD64;
+    border: 1px solid #5ABD64;
+    border-radius: 10px;
+    padding-top: 15px;
+    margin-top: 5px;
+}
+
+#logo-navbar-a {
+    margin-right: 5px;
+    cursor: pointer;
+}
+.footer-p {
+    color: white;
+    text-align: center;
+    font-weight: 600;
+    font-size: 15px;
+}
+
+.dateTimeNowYear-footer {
+    color: #5ABD64;
+}
+
+.course-level-beginner {
+    color: #5ABD64;
+    font-size: 17px;
+    font-style: italic;
+    font-weight: bolder;
+}
+
+.course-level-intermediate {
+    color: #F08A35;
+    font-size: 17px;
+    font-style: italic;
+    font-weight: bolder;
+}
+
+.course-level-advanced {
+    color: #D83319;
+    font-size: 17px;
+    font-style: italic;
+    font-weight: bolder;
+}
+
+/*.icon-bar-social-links {
+    position: fixed;
+    top: 40%;
+    right: 5%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}*/
+
+/* Style the icon bar links */
+/*.icon-bar  ion-icon {
+    display: block;
+    text-align: center;
+    padding: 16px;
+    transition: all 0.3s ease;
+    font-size: 35px;
+    position: relative;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 1370px) {
+    .icon-bar-social-links {
+        display: none !important;
+    }
+}
+
+.social-links-icons-a {
+    color: #6A746B;
+}
+
+.icon-youtube:hover {
+    color: red;
+}
+
+.icon-instagram:hover {
+    color: #E1306C;
+}
+
+.icon-twitter:hover {
+    color: #1DA1F2;
+}
+
+.icon-github:hover {
+    color: black;
+}*/
+
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 700;
+    src: local('Open Sans Bold'), local('OpenSans-Bold'), url(https://themes.googleusercontent.com/static/fonts/opensans/v8/k3k702ZOKiLJc3WVjuplzHhCUOGz7vYGh680lGh-uXM.woff) format('woff');
+}
+
+@keyframes electron1 {
+    40% {
+        left: calc(100% - 4px);
+        top: -6px;
+    }
+
+    50% {
+        left: calc(100% - 4px);
+        top: calc(100% - 4px);
+    }
+
+    90% {
+        left: -6px;
+        top: calc(100% - 4px);
+    }
+
+    100% {
+        left: -6px;
+        top: -5px;
+    }
+}
+
+@keyframes electron2 {
+    40% {
+        left: -6px;
+        top: calc(100% - 4px);
+    }
+
+    50% {
+        left: -6px;
+        top: -5px;
+    }
+
+    90% {
+        left: calc(100% - 4px);
+        top: -6px;
+    }
+
+    100% {
+        left: calc(100% - 4px);
+        top: calc(100% - 4px);
+    }
+}
+
+
+/*za social links*/
+@media screen and (max-width: 1370px) {
+    .icon-bar-social-links {
+        display: none !important;
+    }
+}
+/*za social links*/
+@media screen and (max-width: 1370px) {
+    .icon-bar-social-links-index-table {
+        display: none !important;
+    }
+}
+
+.modal-dialog-temp{
+    top: 35%;
+}
+
+
+
+
+/*tuka */
+/*.box {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    transform-style: preserve-3d;
+    animation: animate 40s linear infinite;
+}
+
+    .box span {
+        position: absolute;*/
+       /* top: 0;
+        left: 0;*/
+        
+        /*width: 100%;
+        height: 100%;
+        transform-origin: center;
+        transform-style: preserve-3d;
+        transform: rotateY(calc(var(--i)*45deg)) translateZ(300px);
+    }
+
+        .box span img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+@keyframes animate {
+    0% {
+        transform: perspective(1000px) rotateY(0deg);
+    }
+
+    100% {
+        transform: perspective(1000px) rotateY(360deg);
+    }
+}
+
+.cont-carousel {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    display: flex;
+}*/
+

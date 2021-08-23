@@ -1,0 +1,76 @@
+﻿@model BoxOfCourses.Models.Course
+
+@{
+    ViewBag.Title = "Details";
+}
+<div class="container cont">
+    <h2 class="take-course-heading">Continue learning <span class="take-course-heading-name">@Model.Name</span></h2>
+    <div class="container-fluid">
+        <hr class="hr-take-course-heading" />
+        <div class="row iframe-container">
+            <iframe class="iframe-video" height="475" width="800" src="@Html.DisplayFor(m=>m.VideoURL)" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </div>
+    @*<p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>*@
+
+    <div class="form-group">
+        <div class=" col-md-10">
+            <a style="color:black!important" href="~/Courses/Index" id="" class="btn btn-warning">Back to the list</a> |
+            @Html.ActionLink("Edit this course", "Edit", new { id = Model.Id }, new { @class = "btn btn-info", @style = "color:black!important;" })
+        </div>
+    </div>
+
+
+</div>
+
+@section scripts{
+   
+}
+
+<style>
+    iframe {
+        display: block;
+    }
+
+    .cont {
+        padding-top: 20px;
+    }
+
+    iframe {
+        text-align: center;
+        padding: 30px;
+    }
+
+    .take-course-heading {
+        font-size: 35px;
+        color: white;
+    }
+
+    .take-course-heading-name {
+        font-size: 35px;
+        color: #5ABD64;
+    }
+
+    .hr-take-course-heading {
+        border: 0.5px solid #303641;
+    }
+
+    .iframe-container {
+        position: relative;
+        width: 100%;
+        padding-bottom: 56.25%;
+        height: 0;
+    }
+
+    .iframe-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+        
+</style>

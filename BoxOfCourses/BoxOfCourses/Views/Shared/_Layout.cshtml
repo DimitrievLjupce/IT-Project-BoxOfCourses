@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page - BoxOfCourses</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    <style>
+        .navbar {
+            background-color: #1a202c;
+            border-color: transparent;
+        }
+
+        .navbar li {
+           color: #000
+         }
+       
+    </style>
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top navbar-default ">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="~/Home/Index" class="logo-img-navbar"><img id="logo-navbar-a" src="~/Content/photos/logo-navbar.png" width="50" height="50" class="navbar-left" /></a>
+                @Html.ActionLink("BoxOfCourses", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("All Courses", "Index", "Courses")</li>
+                    @*<li><a href="~/Courses/Index">About creator</a></li>*@
+                    <li><a href="#">About creator</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid body-content">
+        @*<div class="icon-bar text-right icon-bar-social-links">
+         <a class ="social-links-icons-a icon-instagram" href="https://www.finki.ukim.mk/"><ion-icon class="icon-instagram" name="logo-instagram"></ion-icon></a>
+         <a class ="social-links-icons-a" href="https://www.finki.ukim.mk/"><ion-icon class="icon-youtube" name="logo-youtube"></ion-icon></a>
+         <a class ="social-links-icons-a" href="https://www.finki.ukim.mk/"><ion-icon class="icon-twitter" name="logo-twitter"></ion-icon></a>
+         <a class ="social-links-icons-a" href="https://github.com/DimitrievLjupce"><ion-icon class="icon-github" name="logo-github"></ion-icon></a>
+
+        @* <ion-icon name="logo-youtube"></ion-icon>
+         <ion-icon name="logo-twitter"></ion-icon>*@
+    </div>
+        @RenderBody()
+        <hr />
+        <div class="container">
+            <footer>
+                <p class="footer-p"> <span class="dateTimeNowYear-footer">&copy; @DateTime.Now.Year </span>- Ljupcho Dimitriev </p>
+            </footer>
+        </div>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+
+    @*za social links*@
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+
+
+</html>

@@ -1,0 +1,137 @@
+﻿@model BoxOfCourses.Controllers.ViewModel
+@{
+    ViewBag.Title = "Edit";
+}
+
+
+
+<div class="container cont">
+    <h2 class="editcourse-heading">Edit <span class="editcourse-heading-name">@Model.Model.Name </span>course</h2>
+
+    @*Uncomment this - so Duki*@
+    @*<label for="cars">Choose a car:</label>*@
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+
+        @*Uncomment this - so Duki*@
+        @*@Html.DropDownList("ListItems", new SelectList(Model.ListItems.Items,
+                                               "Value", "Text", Model.ListItems.SelectedValue))
+
+            @Html.DropDownListFor(model => model.Model.LanguageId, new SelectList(Model.ListItems, "Value", "Text"));*@
+        <hr class="hr-edit" />
+        <div class="row">
+            <div class="col-md-8 form-horizontal form-container-edit">
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.Model.Id)
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Model.Name, htmlAttributes: new { @class = "control-label col-md-2", id = "modelNameEdit" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Model.Name, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Model.Category, htmlAttributes: new { @class = "control-label col-md-2", id = "modelCategoryEdit" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Model.Category, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Model.Category, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Model.Level, htmlAttributes: new { @class = "control-label col-md-2", id = "modelLevelEdit" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Model.Level, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Model.Level, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Model.ImageURL, htmlAttributes: new { @class = "control-label col-md-2", id = "modelImageEdit" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Model.ImageURL, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Model.ImageURL, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Model.VideoURL, htmlAttributes: new { @class = "control-label col-md-2", id = "modelVideoEdit" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Model.VideoURL, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Model.VideoURL, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Model.Type, htmlAttributes: new { @class = "control-label col-md-2", id = "modelTypeEdit" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Model.Type, new { htmlAttributes = new { @class = "form-control", disabled = "disabled", @readonly = "readonly" } })
+                        @Html.ValidationMessageFor(model => model.Model.Type, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <a style="color: black;" class="btn btn-warning" href="~/Courses/Index">Back to the list</a>
+                        <input type="submit" value="Save" class="btn btn-success" style="color:black; width: 160px" />
+                    </div>
+                </div>
+
+                @*<img style="max-width: 150px; max-height: 120px" src="@Html.DisplayFor(modelItem => item.ImageURL)" />*@
+            </div>
+            <div class="col-md-4">
+                <img src="@Model.Model.ImageURL" class="img-responsive" style="width: 310px; height: 320px; " />
+            </div>
+
+        </div>
+    }
+
+    @*<div>
+         @Html.ActionLink("Back to List", "Index")
+    </div>*@
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+<style>
+    .cont{
+        padding-top: 100px;
+        padding-bottom: 50px;
+    }
+    .editcourse-heading-name {
+        color: #5ABD64;
+        font-size: 35px;
+    }
+
+    .editcourse-heading {
+        color: white;
+        
+    }
+
+    #modelNameEdit, 
+    #modelCategoryEdit, 
+    #modelLevelEdit, 
+    #modelImageEdit, 
+    #modelVideoEdit, 
+    #modelTypeEdit {
+        color: #5ABD64;
+        font-size: 18px;
+        font-weight: 600;
+    }
+
+    .hr-edit {
+        border: 1px solid #303641;
+    }
+
+    .form-container-edit{
+        width: 550px!important;
+    }
+</style>
