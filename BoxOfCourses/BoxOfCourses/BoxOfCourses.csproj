@@ -172,6 +172,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LanguagesController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ReviewModelsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -183,12 +184,18 @@
     <Compile Include="Migrations\202106270755181_LanguagesAdded.Designer.cs">
       <DependentUpon>202106270755181_LanguagesAdded.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202108281127190_review.cs" />
+    <Compile Include="Migrations\202108281127190_review.Designer.cs">
+      <DependentUpon>202108281127190_review.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Course.cs" />
+    <Compile Include="Models\Email.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Language.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\ReviewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -363,6 +370,7 @@
     <Content Include="Content\DataTables\images\sort_desc.png" />
     <Content Include="Content\DataTables\images\sort_desc_disabled.png" />
     <Content Include="Content\DataTables\swf\flashExport.swf" />
+    <Content Include="Content\photos\creator.jpg" />
     <Content Include="Content\photos\bulb-mindset.jpg" />
     <Content Include="Content\photos\carousel-1.png" />
     <Content Include="Content\photos\code-1.png" />
@@ -378,6 +386,8 @@
     <Content Include="Content\photos\login-gif.gif" />
     <Content Include="Content\photos\logo-navbar.png" />
     <Content Include="Content\photos\SnakeGame.png" />
+    <Content Include="Content\photos\white-star.png" />
+    <Content Include="Content\photos\yellow-star.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -521,6 +531,12 @@
     <Content Include="Views\Languages\Details.cshtml" />
     <Content Include="Views\Languages\Edit.cshtml" />
     <Content Include="Views\Languages\Index.cshtml" />
+    <Content Include="Views\Home\SendEmail.cshtml" />
+    <Content Include="Views\ReviewModels\Create.cshtml" />
+    <Content Include="Views\ReviewModels\Delete.cshtml" />
+    <Content Include="Views\ReviewModels\Details.cshtml" />
+    <Content Include="Views\ReviewModels\Edit.cshtml" />
+    <Content Include="Views\ReviewModels\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -545,6 +561,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202106270755181_LanguagesAdded.resx">
       <DependentUpon>202106270755181_LanguagesAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202108281127190_review.resx">
+      <DependentUpon>202108281127190_review.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

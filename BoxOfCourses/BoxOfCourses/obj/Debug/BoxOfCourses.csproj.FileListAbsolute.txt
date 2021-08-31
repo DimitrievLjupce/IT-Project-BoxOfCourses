@@ -109,3 +109,4 @@ D:\IT - project\BoxOfCourses\BoxOfCourses\obj\Debug\BoxOfCourses.pdb
 D:\IT - project\BoxOfCourses\BoxOfCourses\obj\Debug\BoxOfCourses.Migrations.initial.resources
 D:\IT - project\BoxOfCourses\BoxOfCourses\obj\Debug\BoxOfCourses.csproj.GenerateResource.cache
 D:\IT - project\BoxOfCourses\BoxOfCourses\obj\Debug\BoxOfCourses.Migrations.LanguagesAdded.resources
+D:\IT - project\BoxOfCourses\BoxOfCourses\obj\Debug\BoxOfCourses.Migrations.review.resources

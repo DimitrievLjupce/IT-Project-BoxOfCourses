@@ -5,7 +5,7 @@
     })
 
     $("#registerLink").on("mouseover", function () {
-        this.style.backgroundColor = "white";
+        this.style.backgroundColor = "#303b51";
         this.style.fontWeight = 500;
     }).on("mouseout", function () {
         this.style.backgroundColor = "#1a202c";
@@ -13,7 +13,7 @@
     })
 
     $("#loginLink").on("mouseover", function () {
-        this.style.backgroundColor = "white";
+        this.style.backgroundColor = "#303b51";
         this.style.fontWeight = 500;
     }).on("mouseout", function () {
         this.style.backgroundColor = "#1a202c";

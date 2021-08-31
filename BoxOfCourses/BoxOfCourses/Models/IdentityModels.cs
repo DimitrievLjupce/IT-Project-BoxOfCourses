@@ -22,6 +22,8 @@ namespace BoxOfCourses.Models
     {
         public DbSet<Course> Courses { get; set; }
         public DbSet<Language> Languages { get; set; }
+        public DbSet<ReviewModel> Reviews { get; set; }
+
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {

@@ -1,0 +1,95 @@
+﻿@model IEnumerable<BoxOfCourses.Models.ReviewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="container cont-reviews-table" style="color: white; ">
+
+    <p style="color:white; font-size: 35px">
+        Want to <span style="color: #5ABD64">share your opinion</span> with us? <a href="~/ReviewModels/Create"><ion-icon style="color: orange; font-size: 30px; padding-top: 9px" name="duplicate"></ion-icon></a>
+    </p>
+    <div class="table-reviews-container">
+        <table class="table table-reviews">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.UserName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Category)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Comment)
+                    </th>
+                    <th>
+                        User's review
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="username-td">
+                            @Html.DisplayFor(modelItem => item.UserName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Category)
+                        </td>
+                        <td>
+                            <span style="box-sizing: border-box;">@Html.DisplayFor(modelItem => item.Comment)</span>
+                        </td>
+                        <td>
+                            @for (int i = 0; i < item.ReviewValue; i++)
+                            {
+                                <img class="colored-stars" style="width: 25px; height: 25px" src="~/Content/photos/white-star.png" />
+                            }
+                            @*@Html.DisplayFor(modelItem => item.ReviewValue)*@
+                        </td>
+                        <td>
+                            @if (User.Identity.Name == item.UserName)
+                            {
+                                @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger" })
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<style>
+    .colored-stars{
+        background: url('/Content/photos/yellow-star.png');
+        background-repeat: no-repeat;
+        background-size: 25px;
+    }
+
+    .cont-reviews-table
+    {
+        margin-top: 50px;
+    }
+    .table-reviews-container{
+        padding-top: 50px;
+    }
+
+    th {
+        color: #5ABD64;
+    }
+
+    .username-td{
+        color: lightblue;
+        font-size: 15px;
+    }
+
+</style>
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $(".table-reviews").DataTable();
+        })
+    </script>
+    }

@@ -16,7 +16,6 @@
         .navbar li {
            color: #000
          }
-       
     </style>
 </head>
 <body>
@@ -34,9 +33,9 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("All Courses", "Index", "Courses")</li>
+                    <li>@Html.ActionLink("Reviews", "Index", "ReviewModels")</li>
                     @*<li><a href="~/Courses/Index">About creator</a></li>*@
-                    <li><a href="#">About creator</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <li class="contact-nav"><a class="contact-nav-a" href="~/Home/SendEmail">Contact</a></li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
@@ -59,7 +58,8 @@
                 <p class="footer-p"> <span class="dateTimeNowYear-footer">&copy; @DateTime.Now.Year </span>- Ljupcho Dimitriev </p>
             </footer>
         </div>
-    </div>
+
+
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")

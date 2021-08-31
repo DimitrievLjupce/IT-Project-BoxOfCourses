@@ -2,14 +2,13 @@
     ViewBag.Title = "Home Page";
 }
 
+@*script for icons*@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.13.0/devicon.min.css">
-@*<div class="jumbotron jumbotron-detail">
 
-    </div>*@
 <div class="container cont-top">
     <div class="row">
         <div class="container">
-            <i><h1 class="h1-learn">Learn continually <small>- there's always "one more thing" to learn! - Steve Jobs</small></h1></i>
+            <h1 class="h1-learn">Learn continually <small>- there's always "one more thing" to learn! </small></h1>
             <hr class="hr-index-heading" />
         </div>
     </div>
@@ -28,7 +27,7 @@
                 the specific course that anyone wants. The creator is Ljupcho Dimitriev, student at FCSE,
                 <i class="faculty-name">Faculty of Computer Science and Engineering, Skopje - </i><a class="faculty-link" href="https://www.finki.ukim.mk/">FINKI</a>.
             </p>
-            <a class="btn btn-success" href="~/Views/Courses/Create.cshtml">Get to know the creator</a>
+            <a class="btn btn-success" href="~/Home/SendEmail">Get in touch</a>
             <br />
             <br />
             <p class="text-justify p-about2">
@@ -39,27 +38,13 @@
 
     <div class="row">
         <div class="quote-centered">
-            <h4><span class="text-green-400">W</span>here <span class="text-green-400">e</span>ffective <span class="text-green-400">l</span>earning <span class="text-green-400">h</span>appens</h4>
+            <h4 class="where-effective-learning-happens"><span class="text-green-400">W</span>here <span class="text-green-400">e</span>ffective <span class="text-green-400">l</span>earning <span class="text-green-400">h</span>appens</h4>
         </div>
     </div>
 
     <div class="row row-5">
         <div class="container">
             <h2 class="marvelousAt">BoxOfCourses is <span class="text-green-500-marvelous">MARVELOUS</span> at...</h2>
-            @*<div class="col-md-3">
-                    <img class="imgSize img-circle" data-toggle="tooltip" title="Showing all YouTube IT courses at one place" src="~/Content/photos/youtubeCourses.jpg" />
-                </div>
-                <div class="col-md-3">
-                    <img class="imgSize img-circle" data-toggle="tooltip" title="Build you better skills that deliver results" src="~/Content/photos/programming-skills.png" />
-                </div>
-                <div class="col-md-3 col-sm-6">
-
-                    <img class="imgSize img-circle" data-toggle="tooltip" title="Solutions" src="~/Content/photos/solutions.jpg" />
-                </div>
-                <div class="col-md-3 col-sm-6">
-
-                    <img class="imgSize img-circle" data-toggle="tooltip" title="Problem solving" src="~/Content/photos/bulb-mindset.jpg" />
-                </div>*@
         </div>
     </div>
 
@@ -80,7 +65,7 @@
         </div>
     </div>
 
-    <div class="row">
+    <div class="bottom-cont row">
         <div class="col-md-7">
             <img class="lets-build" src="~/Content/photos/lets-build.png" />
         </div>
@@ -89,29 +74,14 @@
             <p class="lets-start"><a style="color: #5ABD64" class="text-green-500-together" href="~/Courses/Index">Let<span class="build-together">'</span>s start<span class="build-together">!</span></a></p>
         </div>
     </div>
-
-    @*<div class="row">
-            <div class="container cont-carousel">
-                <div class="box col-md-9">
-                    <span style="--i:1;"><img src="~/Content/photos/bulb-mindset.jpg" height="300px" width="200px"></span>
-                    <span style="--i:2;"><img src="~/Content/photos/bulb-mindset.jpg" height="300px" width="200px"></span>
-                    <span style="--i:3;"><img src="~/Content/photos/bulb-mindset.jpg" height="300px" width="200px"></span>
-                    <span style="--i:4;"><img src="~/Content/photos/bulb-mindset.jpg" height="300px" width="200px"></span>
-                    <span style="--i:5;"><img src="~/Content/photos/bulb-mindset.jpg" height="300px" width="200px"></span>
-                    <span style="--i:6;"><img src="~/Content/photos/bulb-mindset.jpg" height="300px" width="200px"></span>
-                    <span style="--i:7;"><img src="~/Content/photos/bulb-mindset.jpg" height="300px" width="200px"></span>
-                    <span style="--i:8;"><img src="~/Content/photos/bulb-mindset.jpg" height="300px" width="200px"></span>
-                </div>
-            </div>
-        </div>*@
 </div>
 
 <div class="container-fluid">
-    <div class="coding-tips-downside">
-        @*<div class="container">
+    <!--<div class="coding-tips-downside">-->
+    @*<div class="container">
             <span class="col-md-1 icon-footer"><i class="devicon-android-plain"></i></span>
         </div>*@
-    </div>
+    <!--</div>-->
     <div class="icon-bar text-right icon-bar-social-links">
         <a class="social-links-icons-a icon-instagram" href="https://www.finki.ukim.mk/" target="_blank"><ion-icon class="icon-instagram" name="logo-instagram"></ion-icon></a>
         <a class="social-links-icons-a" href="https://www.finki.ukim.mk/" target="_blank"><ion-icon class="icon-youtube" name="logo-youtube"></ion-icon></a>
@@ -186,6 +156,7 @@
     .h1-learn {
         color: #5ABD64;
         font-weight: bold;
+        font-style: italic;
     }
 
     .heading-about {
@@ -195,12 +166,12 @@
 
     .p-about {
         padding-top: 20px;
-        font-size: 15px;
+        font-size: 17px;
         color: white;
     }
 
     .p-about2 {
-        font-size: 15px;
+        font-size: 17px;
         color: white;
     }
 
@@ -261,6 +232,7 @@
             width: 550px;
             height: 400px;
             margin-top: 50px;
+            border-radius: 12px;
         }
 
         .build-together {
@@ -346,14 +318,14 @@
             height: 100px!important;
             width: 50px!important;
         }
+        .bottom-cont{
+            margin-bottom: 50px;
+        }
+
+    .where-effective-learning-happens{
+        color: white;
+    }
 
 </style>
 
 
-@section scripts{
-    <script>
-        $(function () {
-            $('[data-toggle="tooltip"]').tooltip()
-        })
-    </script>
-}
