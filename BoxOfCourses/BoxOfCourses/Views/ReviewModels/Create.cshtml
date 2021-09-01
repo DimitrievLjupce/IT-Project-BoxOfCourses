@@ -3,70 +3,70 @@
 @{
     ViewBag.Title = "Create";
 }
-<div class="container rating-container">
-    <h2 style="color: #5ABD64;">How was your experience?</h2>
+<div class="main">
+    <div class="rating-container">
+        <h2 style="color: #5ABD64;">How was your experience?</h2>
 
-    @using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
 
-        <div class="form-horizontal" >
-            @*<h4>Your opinion matters.</h4>*@
-            <hr />
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            <div class="form-group user-container">
-                @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control CurrentUserBox" } })
-                    @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.Category, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.DropDownListFor(model => model.Category, new SelectList(Model.Categories), new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.Category, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.Comment, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.TextAreaFor(model => model.Comment, new { rows = "3", cols = "20", @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.Comment, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @*@Html.LabelFor(model => model.ReviewValue, htmlAttributes: new { @class = "control-label col-md-2" })*@
-
-                <div class="col-md-10">
-                    <div id="stars-container" class="stars">
-                        <img id="1" src="~/Content/photos/white-star.png" onclick="rateStar(1)" onmouseover="starOver(1)" onmouseout="starOut(1)" class="reviewStar" style="width: 30px; height: 30px;">
-                        <img id="2" src="~/Content/photos/white-star.png" onclick="rateStar(2)" onmouseover="starOver(2)" onmouseout="starOut(2)" class="reviewStar" style="width: 30px; height: 30px;">
-                        <img id="3" src="~/Content/photos/white-star.png" onclick="rateStar(3)" onmouseover="starOver(3)" onmouseout="starOut(3)" class="reviewStar" style="width: 30px; height: 30px;">
-                        <img id="4" src="~/Content/photos/white-star.png" onclick="rateStar(4)" onmouseover="starOver(4)" onmouseout="starOut(4)" class="reviewStar" style="width: 30px; height: 30px;">
-                        <img id="5" src="~/Content/photos/white-star.png" onclick="rateStar(5)" onmouseover="starOver(5)" onmouseout="starOut(5)" class="reviewStar" style="width: 30px; height: 30px;">
+            <div class="form-horizontal">
+                @*<h4>Your opinion matters.</h4>*@
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group user-container">
+                    @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control CurrentUserBox" } })
+                        @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
                     </div>
-                    @Html.EditorFor(model => model.ReviewValue, new { htmlAttributes = new { @class = "form-control RateValue" } })
-                    @Html.ValidationMessageFor(model => model.ReviewValue, "", new { @class = "text-danger" })
                 </div>
-            </div>
 
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Submit" class="btn btn-success" />
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Category, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(model => model.Category, new SelectList(Model.Categories), new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Category, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Comment, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextAreaFor(model => model.Comment, new { rows = "3", cols = "20", @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Comment, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+         
+                <div class="form-group">
+                    @*@Html.LabelFor(model => model.ReviewValue, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                    <div class="col-md-10">
+                        <div id="stars-container" class="stars">
+                            <img id="1" src="~/Content/photos/white-star.png" onclick="rateStar(1)" onmouseover="starOver(1)" onmouseout="starOut(1)" class="reviewStar" style="width: 30px; height: 30px;">
+                            <img id="2" src="~/Content/photos/white-star.png" onclick="rateStar(2)" onmouseover="starOver(2)" onmouseout="starOut(2)" class="reviewStar" style="width: 30px; height: 30px;">
+                            <img id="3" src="~/Content/photos/white-star.png" onclick="rateStar(3)" onmouseover="starOver(3)" onmouseout="starOut(3)" class="reviewStar" style="width: 30px; height: 30px;">
+                            <img id="4" src="~/Content/photos/white-star.png" onclick="rateStar(4)" onmouseover="starOver(4)" onmouseout="starOut(4)" class="reviewStar" style="width: 30px; height: 30px;">
+                            <img id="5" src="~/Content/photos/white-star.png" onclick="rateStar(5)" onmouseover="starOver(5)" onmouseout="starOut(5)" class="reviewStar" style="width: 30px; height: 30px;">
+                        </div>
+                        @Html.EditorFor(model => model.ReviewValue, new { htmlAttributes = new { @class = "form-control RateValue" } })
+                        @Html.ValidationMessageFor(model => model.ReviewValue, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Submit" class="btn btn-success" />
+                    </div>
                 </div>
             </div>
+        }
+
+        <div>
+            @Html.ActionLink("Back to List", "Index")
         </div>
-    }
-
-    <div>
-        @Html.ActionLink("Back to List", "Index")
     </div>
 </div>
-
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 
@@ -121,10 +121,10 @@
         background-size: 30px 30px;
     }
 
-    #stars-container{
+    @*#stars-container{
         cursor: pointer;
         margin-left: 200px;
-    }
+    }*@
 
     .RateValue{
         display: none;
@@ -134,15 +134,36 @@
         display: none;
     }
 
-    .rating-container {
-        margin-top: 80px;
-        
-    }
-
     .choose-category-label, .comment-label {
         color: #5ABD64;
         font-size: 18px;
     }
-    
-    
+
+    .rating-container {
+        margin-top: 80px;
+        background-color: lightgray;
+        border: 1px solid black;
+        @*display: block;
+        width: 800px;
+        height: auto;
+        *@ display: table;
+        width: 800px;
+    }
+
+        .rating-container div {
+            @*display: flex;
+            align-items: center;
+            justify-content: center;
+            *@ width: 500px;
+            height: auto;
+            flex-wrap: wrap;
+            margin: auto;
+            display: table-row;
+            text-align: center;
+            justify-content: center;
+            @*vertical-align: middle;
+            *@
+        }
+   
+   
 </style>

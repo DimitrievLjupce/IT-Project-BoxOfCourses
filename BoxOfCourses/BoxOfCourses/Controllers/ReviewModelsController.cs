@@ -43,6 +43,8 @@ namespace BoxOfCourses.Controllers
 
             model.Categories.Add("Support quality");
             model.Categories.Add("Content quality");
+            model.Categories.Add("Videos quality");
+            model.Categories.Add("Functionality");
 
             return View(model);
         }

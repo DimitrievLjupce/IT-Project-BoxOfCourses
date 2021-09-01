@@ -100,7 +100,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="alert-field col-md-5 alert alert-warning" role="alert">
+            <div class="alert alert-warning alert-sent" role="alert">
                 <span class="successfullySentEmail " style="color: green;">@ViewBag.Message</span>
             </div>
             @*<div style="width: 350px" class="alert alert-info col-md-5">
@@ -126,7 +126,8 @@
         $(document).ready(function () {
             validate();
             $('#modelBody, #modelEmail, #modelPassword').change(validate);
-            $(".alert-field").hide();
+
+            $(".alert-sent").hide();
             clearInputFields();
 
             
@@ -144,14 +145,14 @@
         }
         
         function clearInputFields() {
-            $("#submitEmailForm").submit(function (event) {
-                $(".alert-field").show();
+            $("#submitEmailForm").on("click", function (event) {
+              
                @* if ($("#successfullySentEmail").text() === "Your email has been sent!") {
                     $("#successfullySentEmail").addClass("alert alert-success");
-                $("#modelSubject").val("");
-                $("#modelBody").val("");
-                $("#modelEmail").val("");
-                $("#modelPassword").val("");
+                    $("#modelSubject").val("");
+                    $("#modelBody").val("");
+                    $("#modelEmail").val("");
+                    $("#modelPassword").val("");
                 }*@
             })
         }

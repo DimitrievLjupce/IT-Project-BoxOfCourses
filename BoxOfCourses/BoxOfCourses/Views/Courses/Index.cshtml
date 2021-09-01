@@ -52,7 +52,7 @@
 </div>
 <div class="container cont">
     <a class="btnn" href="#">
-        <div class="div4e"><h2 class="RecommendedCourses btn__label ">Recommended courses from the <span class="text-green-400">BOX</span></h2></div>
+        <div class="heading-container"><h2 class="RecommendedCourses btn__label ">Recommended courses from the <span class="text-green-400">BOX</span></h2></div>
     </a>
     <p>
         @Html.ActionLink("Create new Course", "Create", "Course", new { @class = "btn btn-success CreateNewCourseButton" })
@@ -122,8 +122,8 @@
     .cont {
         padding-top: 20px;
     }
-
-    .carousel-container{
+    
+    .carousel-container {
         padding-top: 34px;
     }
     .carousel .carousel-indicators li {
@@ -135,7 +135,15 @@
         background-color: #444;
     }
 
-    .carousel-inner{
+    .left{
+        height: 480px;
+    }
+
+    .right {
+        height: 480px;
+    }
+
+    .carousel-inner {
         height: 500px;
     }
     .carousel-img {
@@ -250,7 +258,12 @@
     }
 
     .btnn {
-      transform: skewX(20deg);
+        transform: skewX(20deg);
+        margin: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: auto;
     }
 
 /* Electrons */
@@ -371,10 +384,23 @@
             })
 
         });*@
-
-
+        var tempTable;
         $(document).ready(function () {
+
             var table = $("#CoursesTable").DataTable();
+
+            var searchText = window.location.search.substring(1);
+            if (searchText === "c") {
+                searchText = searchText + "#";
+            }
+            if (searchText.length > 0) {
+                $(this).scrollTop(250); @* + $(this).innerHeight() *@
+            }
+            table.search(searchText).draw();
+            tempTable = table;
+
+        });
+
             $("#CoursesTable .js-delete").on("click", function () {
                 var button = $(this);
                 bootbox.confirm({
@@ -395,7 +421,7 @@
                                 url: "/Courses/Delete/" + button.attr("data-course-id"),
                                 method: "GET",
                                 success: function () {
-                                    table.row(button.parents("tr")).remove().draw();
+                                    tempTable.row(button.parents("tr")).remove().draw();
                                 },
                                 error: function (err) {
                                     console.log(err);
@@ -405,7 +431,6 @@
                     }
                 });
             })
-        });
 
     </script>
 }
