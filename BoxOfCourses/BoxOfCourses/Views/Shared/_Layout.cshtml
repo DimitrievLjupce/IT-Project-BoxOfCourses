@@ -13,9 +13,47 @@
             border-color: transparent;
         }
 
-        .navbar li {
-           color: #000
-         }
+            .navbar li {
+                color: #000
+            }
+
+        .contact-nav-a {
+            color: #C126EA !important;
+            font-size: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .contact-nav-a, .reviews-nav-a, .allcourses-nav-a, #app-title {
+            font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Helvetica, Arial, sans-serif;
+        }
+
+        .reviews-nav-a {
+            color: #C126EA !important;
+            font-size: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .allcourses-nav-a {
+            color: #C126EA !important;
+            font-size: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+            .allcourses-nav-a:hover, .reviews-nav-a:hover, .contact-nav-a:hover {
+                color: #5ABD64 !important;
+            }
+
+        #app-title {
+            font-size: 23px;
+            letter-spacing: 1px;
+        }
+
+            #app-title:hover {
+                color: #5ABD64 !important;
+            }
     </style>
 </head>
 <body>
@@ -28,13 +66,15 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a href="~/Home/Index" class="logo-img-navbar"><img id="logo-navbar-a" src="~/Content/photos/logo-navbar.png" width="50" height="50" class="navbar-left" /></a>
-                @Html.ActionLink("BoxOfCourses", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("BoxOfCourses", "Index", "Home", new { area = "" }, new { id="app-title", @class = "navbar-brand", style="color:white"})
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("All Courses", "Index", "Courses")</li>
-                    <li>@Html.ActionLink("Reviews", "Index", "ReviewModels")</li>
+                    @*<li>@Html.ActionLink("All Courses", "Index", "Courses")</li>*@
+                    @*<li>@Html.ActionLink("Reviews", "Index", "ReviewModels")</li>*@
                     @*<li><a href="~/Courses/Index">About creator</a></li>*@
+                    <li><a class="allcourses-nav-a" href="~/Courses/Index">All Courses</a></li>
+                    <li><a class="reviews-nav-a" href="~/ReviewModels/Index">Reviews</a></li>
                     <li class="contact-nav"><a class="contact-nav-a" href="~/Home/SendEmail">Contact</a></li>
                 </ul>
                 @Html.Partial("_LoginPartial")
@@ -52,7 +92,7 @@
          <ion-icon name="logo-twitter"></ion-icon>*@
     </div>
         @RenderBody()
-        <hr />
+        <hr style="border: 0.5px solid #C126EA;"/>
         <div class="container">
             <footer>
                 <p class="footer-p"> <span class="dateTimeNowYear-footer">&copy; @DateTime.Now.Year </span>- Ljupcho Dimitriev </p>
@@ -60,16 +100,13 @@
         </div>
 
 
-
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 
 
-    @*za social links*@
+    @*za social links - embed scripts*@
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
-
-
 </html>

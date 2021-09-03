@@ -370,6 +370,7 @@
     <Content Include="Content\DataTables\images\sort_desc.png" />
     <Content Include="Content\DataTables\images\sort_desc_disabled.png" />
     <Content Include="Content\DataTables\swf\flashExport.swf" />
+    <Content Include="Content\photos\3WyW.gif" />
     <Content Include="Content\photos\creator.jpg" />
     <Content Include="Content\photos\bulb-mindset.jpg" />
     <Content Include="Content\photos\carousel-1.png" />
@@ -387,6 +388,8 @@
     <Content Include="Content\photos\logo-navbar.png" />
     <Content Include="Content\photos\SnakeGame.png" />
     <Content Include="Content\photos\white-star.png" />
+    <Content Include="Content\photos\whiteStar-1.png" />
+    <Content Include="Content\photos\whiteStar-2.png" />
     <Content Include="Content\photos\yellow-star.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />

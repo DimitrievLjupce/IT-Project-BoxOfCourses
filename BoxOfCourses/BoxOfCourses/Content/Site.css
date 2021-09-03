@@ -27,11 +27,13 @@ textarea {
 }
 
 #registerLink {
-    color: #6A746B;
-    border: 1px solid #6A746B;
+    color: #C126EA;
+    border: 1px solid #C126EA;
     border-radius: 10px;
     padding-top: 15px;
     margin-top: 5px;
+    margin-right: 5px;
+    font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 #loginLink {
     color: #5ABD64;
@@ -39,6 +41,7 @@ textarea {
     border-radius: 10px;
     padding-top: 15px;
     margin-top: 5px;
+    font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 #logo-navbar-a {
@@ -77,6 +80,63 @@ textarea {
     font-weight: bolder;
 }
 
+/*style for search-tab and labels*/
+input[type="search"] {
+    background-color: #303b51;
+    color: white;
+    border: 1px solid #C126EA;
+    font-size: 17px;
+    font-weight: 300;
+}
+
+.input-sm {
+    background-color: #303b51;
+    color: white;
+    border: 1px solid #C126EA;
+}
+.dataTables_length label {
+    color: #C126EA;
+    font-size: 17px;
+    font-weight: 600;
+}
+#CoursesTable_filter label {
+    color: #C126EA;
+    font-size: 17px;
+    font-weight: 600;
+}
+
+#DataTables_Table_0_filter label {
+    color: #C126EA;
+}
+#username-actionlink {
+    color: #5ABD64;
+    letter-spacing: 1px;
+    padding-top: 19px;
+}
+
+#username-actionlink:hover {
+    color: white;
+}
+
+.dataTables_empty {
+    color: #C126EA;
+}
+/*ends here - style for search-tab and labels*/
+
+.log-off-link {
+    color: #C126EA !important;
+    border: 1px solid #C126EA !important;
+    border-radius: 10px;
+    padding-top: 12px;
+    margin-top: 3px;
+    font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.log-off-link:hover {
+    color: white !important;
+}
+
+/*no matching record found*/
 /*.icon-bar-social-links {
     position: fixed;
     top: 40%;
@@ -85,7 +145,6 @@ textarea {
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
 }*/
-
 /* Style the icon bar links */
 /*.icon-bar  ion-icon {
     display: block;
@@ -122,7 +181,6 @@ textarea {
 .icon-github:hover {
     color: black;
 }*/
-
 @font-face {
     font-family: 'Open Sans';
     font-style: normal;

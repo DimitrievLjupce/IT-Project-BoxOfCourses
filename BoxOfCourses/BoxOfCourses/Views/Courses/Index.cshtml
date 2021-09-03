@@ -176,17 +176,17 @@
     }
 
     th {
-        color: #6A746B;
+        color: #5ABD64;
     }
 
     .courseNameCoulmn {
-        color: #5ABD64;
-        font-weight: 600;
+        color: white;
+        font-weight: 700;
         font-size: 20px;
     }
 
     .courseCategoryCoulmn {
-        color: white;
+        color: grey;
         font-size: 15px;
     }
 
@@ -246,7 +246,7 @@
         color: black;
         text-decoration: none;
         background: rgba(255, 255, 255, .05);
-        border: 2px solid #5ABD64;
+        border: 2px solid #C126EA;
         transform: skewX(-20deg);
         transition: .3s all;
     }
@@ -268,18 +268,18 @@
 
 /* Electrons */
 
-    .btnn::before,
-    .btnn::after {
-        content: "";
-        position: absolute;
-        width: 10px;
-        height: 10px;
-        background: green;
-        border-radius: 100%;
-        transform: skewX(20deg);
-        animation: 4s linear 0s infinite;
-        text-align: center;
-    }
+        .btnn::before,
+        .btnn::after {
+            content: "";
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #5ABD64;
+            border-radius: 100%;
+            transform: skewX(20deg);
+            animation: 4s linear 0s infinite;
+            text-align: center;
+        }
 
     .btnn::before {
         top: -6px;
@@ -294,7 +294,7 @@
     }
 
 
-/* Hover */
+    /* Hover */
 
     .btnn:hover::before,
     .btnn:hover::after,
@@ -322,7 +322,7 @@
         transform: translateY(-50%);
     }
 
-/* Style the icon bar links */
+    /* Style the icon bar links */
     .icon-bar-index-table ion-icon {
         display: block;
         text-align: center;
@@ -384,6 +384,8 @@
             })
 
         });*@
+
+
         var tempTable;
         $(document).ready(function () {
 
@@ -394,7 +396,7 @@
                 searchText = searchText + "#";
             }
             if (searchText.length > 0) {
-                $(this).scrollTop(250); @* + $(this).innerHeight() *@
+                $(this).scrollTop(330); 
             }
             table.search(searchText).draw();
             tempTable = table;

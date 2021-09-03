@@ -7,7 +7,6 @@
 <div class="container cont">
     <h2 class="createCourseHeading">Create <span class="new-course-heading">new </span>course</h2>
 
-
     @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
@@ -128,16 +127,25 @@
     }
 
     .createCourseHeading {
-        color: white;
+        color: #C126EA;
+        font-size: 50px;
     }
 
     .new-course-heading {
         color: #5ABD64;
-        font-size: 35px;
+        font-size: 50px;
     }
 
     .hr-create {
         border: 1px solid #303641;
     }
+
+    .form-control {
+        background-color: #303b51;
+        color: white;
+        border: 1px solid #5ABD64;
+        font-size: 15px;
+    }
+
        
 </style>

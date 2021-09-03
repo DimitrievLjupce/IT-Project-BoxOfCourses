@@ -52,8 +52,7 @@ namespace BoxOfCourses.Controllers
                     string fileName = Path.GetFileName(model.Attachment.FileName);
                     mm.Attachments.Add(new Attachment(model.Attachment.InputStream, fileName));
                 }
-                else
-                {
+
                     mm.IsBodyHtml = false;
                     using (SmtpClient smtp = new SmtpClient())
                     {
@@ -75,7 +74,6 @@ namespace BoxOfCourses.Controllers
                         }
                     }
                 }
-            }
             return View();
         }
     }
