@@ -93,25 +93,25 @@ namespace BoxOfCourses.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Course course = db.Courses.Find(id);
-            course.Languages = db.Languages.ToList();
+            /*course.Languages = db.Languages.ToList();
             var res = db.Languages.ToList().Select(a =>
                                   new SelectListItem
                                   {
                                       Value = a.Id.ToString(),
                                       Text = a.Name
-                                  });
+                                  });*/
             if (course == null)
             {
                 return HttpNotFound();
             }
 
-            var selectList = new SelectList(res);
+           /* var selectList = new SelectList(res);
             var vm = new ViewModel
             {
                 Model = course,
                 ListItems = selectList
-            };
-            return View(vm);
+            };*/
+            return View(course);
         }
         
 

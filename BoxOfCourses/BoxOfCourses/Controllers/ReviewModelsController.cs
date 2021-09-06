@@ -96,7 +96,7 @@ namespace BoxOfCourses.Controllers
             return View(reviewModel);
         }
 
-        // GET: ReviewModels/Delete/5
+        /*// GET: ReviewModels/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -113,8 +113,8 @@ namespace BoxOfCourses.Controllers
 
         // POST: ReviewModels/Delete/5
         [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        [ValidateAntiForgeryToken]*/
+        public ActionResult Delete(int id)
         {
             ReviewModel reviewModel = db.Reviews.Find(id);
             db.Reviews.Remove(reviewModel);

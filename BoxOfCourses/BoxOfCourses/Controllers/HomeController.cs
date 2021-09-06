@@ -14,6 +14,8 @@ namespace BoxOfCourses.Controllers
     {
         public ActionResult Index()
         {
+            ViewBag.LoginSuccess = TempData["loginsuccess"];
+            ViewBag.RegisterSuccess = TempData["registersuccess"];
             return View();
         }
 
@@ -41,17 +43,19 @@ namespace BoxOfCourses.Controllers
         [HttpPost]
         public ActionResult SendEmail(Email model)
         {
-            string To = "boxofcourses@gmail.com";
-            using (MailMessage mm = new MailMessage(model.EmailFrom, To))
-            {
-                mm.Subject = model.Subject;
-                mm.Body = model.Body;
 
-                if (model.Attachment != null && model.Attachment.ContentLength > 0)
+            string To = "boxofcourses@gmail.com";
+
+                using (MailMessage mm = new MailMessage(model.EmailFrom, To))
                 {
-                    string fileName = Path.GetFileName(model.Attachment.FileName);
-                    mm.Attachments.Add(new Attachment(model.Attachment.InputStream, fileName));
-                }
+                    mm.Subject = model.Subject;
+                    mm.Body = model.Body;
+
+                    if (model.Attachment != null && model.Attachment.ContentLength > 0)
+                    {
+                        string fileName = Path.GetFileName(model.Attachment.FileName);
+                        mm.Attachments.Add(new Attachment(model.Attachment.InputStream, fileName));
+                    }
 
                     mm.IsBodyHtml = false;
                     using (SmtpClient smtp = new SmtpClient())
@@ -74,7 +78,7 @@ namespace BoxOfCourses.Controllers
                         }
                     }
                 }
-            return View();
-        }
+                return View();
+            }
     }
 }

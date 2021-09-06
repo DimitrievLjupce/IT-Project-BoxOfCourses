@@ -10,7 +10,7 @@
         Want to <span style="color: #5ABD64">share your opinion</span> with us? <a href="~/ReviewModels/Create"><ion-icon style="color: orange; font-size: 30px; padding-top: 9px" name="duplicate"></ion-icon></a>
     </p>
     <div class="table-reviews-container">
-        <table class="table table-reviews">
+        <table class="table table-reviews" id="ReviewsTable">
             <thead>
                 <tr>
                     <th>
@@ -35,11 +35,11 @@
                         <td class="username-td">
                             @Html.DisplayFor(modelItem => item.UserName)
                         </td>
-                        <td style="color: grey">
+                        <td style="color: grey;  font-weight: 700">
                             @Html.DisplayFor(modelItem => item.Category)
                         </td>
                         <td>
-                            <span style="box-sizing: border-box;">@Html.DisplayFor(modelItem => item.Comment)</span>
+                            <span style="font-weight: 500; font-size: 17px">@Html.DisplayFor(modelItem => item.Comment)</span>
                         </td>
                         <td>
                             @for (int i = 0; i < item.ReviewValue; i++)
@@ -51,7 +51,8 @@
                         <td>
                             @if (User.Identity.Name == item.UserName)
                             {
-                                @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger" })
+                                @*@Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger" })*@
+                            <button data-course-id="@item.Id" class="btn btn-danger js-delete">Delete</button>
                             }
                         </td>
                     </tr>
@@ -85,7 +86,41 @@
 @section scripts{
     <script>
         $(document).ready(function () {
-            $(".table-reviews").DataTable();
+            var table = $(".table-reviews").DataTable();
+
+            tempTable = table;
+        })
+
+
+        $("#ReviewsTable .js-delete").on("click", function () {
+            var button = $(this);
+            bootbox.confirm({
+                message: "Are you sure you want to delete your review?",
+                buttons: {
+                    confirm: {
+                        label: 'Yes',
+                        className: 'btn-success'
+                    },
+                    cancel: {
+                        label: 'No',
+                        className: 'btn-danger'
+                    }
+                },
+                callback: function (result) {
+                    if (result) {
+                        $.ajax({
+                            url: "/ReviewModels/Delete/" + button.attr("data-course-id"),
+                            method: "GET",
+                            success: function () {
+                                tempTable.row(button.parents("tr")).remove().draw();
+                            },
+                            error: function (err) {
+                                console.log(err);
+                            }
+                        })
+                    }
+                }
+            });
         })
     </script>
     }

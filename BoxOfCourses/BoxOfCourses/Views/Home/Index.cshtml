@@ -4,6 +4,7 @@
 
 @*script for icons*@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.13.0/devicon.min.css">
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <div class="container cont-top">
     <div class="row">
@@ -38,18 +39,17 @@
 
     <div class="row">
         <div class="quote-centered">
-            @*<h4 class="where-effective-learning-happens"><span class="text-green-400">W</span>here <span class="text-green-400">e</span>ffective <span class="text-green-400">l</span>earning <span class="text-green-400">h</span>appens</h4>*@
             <h4 style="color: #C126EA">Where effective learning happens</h4>
         </div>
     </div>
 
-    <div class="row row-5">
+    <div class="row row-5 fadediv">
         <div class="container">
             <h2 class="marvelousAt">BoxOfCourses is <span class="text-green-500-marvelous">MARVELOUS</span> at...</h2>
         </div>
     </div>
 
-    <div class="row">
+    <div class="row fadediv">
         <div class="col-md-4 most-quality">
             <h3 class="text-green-500">Showing the most-quality <br />free programming courses  <ion-icon style="color: orange;" name="code-slash-outline"></ion-icon></h3>
             <p class="text-white-500">Took your coding knowledge from a total beginner level to a very confident...</p>
@@ -67,10 +67,10 @@
     </div>
 
     <div class="bottom-cont row">
-        <div class="col-md-7">
+        <div class="col-md-7 fade-div-2">
             <img class="lets-build" src="~/Content/photos/lets-build.png" />
         </div>
-        <div class="col-md-5 ">
+        <div class="col-md-5 fade-div-2 ">
             <h2 class="build-together">Ready to learn something <span class="text-green-500-together">together</span>?</h2>
             <p class="lets-start"><a style="color: #5ABD64" class="text-green-500-together" href="~/Courses/Index">Let<span class="build-together">'</span>s start<span class="build-together">!</span></a></p>
         </div>
@@ -116,6 +116,9 @@
     <a class="social-links-icons-a" href="https://www.finki.ukim.mk/" target="_blank"><ion-icon class="icon-twitter" name="logo-twitter"></ion-icon></a>
     <a class="social-links-icons-a" href="https://github.com/DimitrievLjupce" target="_blank"><ion-icon class="icon-github" name="logo-github"></ion-icon></a>
 </div>
+
+<div class="login-here" login-here-data="@ViewBag.LoginSuccess"></div>
+<div class="register-here" register-here-data="@ViewBag.RegisterSuccess"></div>
 
 ❤️
 
@@ -217,11 +220,10 @@
     .quote-centered {
         text-align: center;
         font-style: italic;
-        margin-top: 20px;
         color: #6A746B;
         border: 1px solid #303641;
         border-radius: 8px;
-        margin-top: 60px;
+        margin-top: 80px;
     }
 
     .text-green-400 {
@@ -372,15 +374,72 @@
             margin-top: 100px;
         }
 
-        .get-in-touch-button {
-            color: black;
-        }
+    .get-in-touch-button {
+        color: white;
+        background-color: #C126EA;
+        border: 0px;
+        font-size: 17px;
+    }
 
 </style>
 
 @section scripts{
     <script>
-      
+
+        //function to set css about main div when page is loaded
+        $(window).on("load", function () {
+            $(".row-cont").css("opacity", 0);
+            if ($(".row-cont").css("opacity") == 0) {
+                $(".row-cont").fadeTo(1500, 1);
+            }
+        })
+
+        //function for animated divs while scrolling
+        $(window).scroll(function () {
+            var windowBottom = $(this).scrollTop() + $(this).innerHeight();
+          
+            $(".fadediv").each(function () {
+                var objectBottom = $(this).offset().top + $(this).outerHeight();
+
+                $(".fadediv").css({ position: "relative", right: 200, opacity: 0 })
+                if (objectBottom <= windowBottom) {
+                    if ($(this).css("opacity") == 0) { $(".fadediv").animate({ left: 0, opacity: 1 }, 1500); }
+                }
+            });
+            $(".fade-div-2").each(function () {
+                var objectBottom = $(this).offset().top + $(this).outerHeight();
+
+                $(".fade-div-2").css({ position: "relative", left: 100, opacity: 0 })
+                if (objectBottom * 0.90 <= windowBottom) {
+                    if ($(this).css("opacity") == 0) { $(".fade-div-2").animate({ left: 0, opacity: 1 }, 1300); }
+                }
+            });
+        }).scroll();
+
+
+        //function to check if login returns success message for alert
+        if ($(".login-here").attr("login-here-data") === "loginsuccess") {
+            Swal.fire({
+                icon: 'success',
+                title: 'You logged in successfully!',
+                showConfirmButton: false,
+                timer: 1500,
+                timerProgressBar: true
+            })
+        }
+
+        //function to check if register returns success message for alert
+        if ($(".register-here").attr("register-here-data") === "registersuccess") {
+            Swal.fire({
+                icon: 'success',
+                title: 'Your account is registered!',
+                showConfirmButton: false,
+                timer: 1500,
+                timerProgressBar: true
+            })
+        }
+
+        //function for footer hover icons
         $(".icon-java").on("mouseover", function () {
             $(".icon-java").attr("src", 'https://img.icons8.com/ios/48/000000/java-coffee-cup-logo--v1.png')
         }).on("mouseout", function () {
@@ -392,7 +451,6 @@
         }).on("mouseout", function () {
             $(".icon-javascript").attr("src", 'https://img.icons8.com/color/48/000000/javascript--v1.png')
         })
-
 
         $(".icon-c-plus-plus").on("mouseover", function () {
             $(".icon-c-plus-plus").attr("src", 'https://img.icons8.com/ios-filled/48/000000/c-plus-plus-logo.png')
@@ -418,13 +476,11 @@
             $(".icon-git").attr("src", 'https://img.icons8.com/color/48/000000/git.png')
         })
 
-
         $(".icon-c-sharp").on("mouseover", function () {
             $(".icon-c-sharp").attr("src", 'https://img.icons8.com/ios-filled/48/000000/c-sharp-logo.png')
         }).on("mouseout", function () {
             $(".icon-c-sharp").attr("src", 'https://img.icons8.com/color/48/000000/c-sharp-logo.png')
         })
-
 
         $(".icon-ruby").on("mouseover", function () {
             $(".icon-ruby").attr("src", 'https://img.icons8.com/ios-filled/48/000000/ruby-programming-language.png')
@@ -468,13 +524,11 @@
             $(".icon-react").attr("src", 'https://img.icons8.com/ultraviolet/48/000000/react--v2.png')
         })
 
-
         $(".icon-swift").on("mouseover", function () {
             $(".icon-swift").attr("src", 'https://img.icons8.com/ios-glyphs/48/000000/swift.png')
         }).on("mouseout", function () {
             $(".icon-swift").attr("src", 'https://img.icons8.com/color/48/000000/swift.png')
         })
-
 
         $(".icon-vue-js").on("mouseover", function () {
             $(".icon-vue-js").attr("src", 'https://img.icons8.com/windows/48/000000/vuejs.png')
@@ -506,14 +560,11 @@
             $(".icon-arduino").attr("src", 'https://img.icons8.com/color/48/000000/arduino.png')
         })
 
-
         $(".icon-mysql").on("mouseover", function () {
             $(".icon-mysql").attr("src", 'https://img.icons8.com/ios-filled/48/000000/mysql-logo.png')
         }).on("mouseout", function () {
             $(".icon-mysql").attr("src", 'https://img.icons8.com/color/48/000000/mysql-logo.png')
         })
-
-        
     </script>
 }
 

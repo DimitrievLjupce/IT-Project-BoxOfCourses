@@ -23,7 +23,7 @@
                         <div class="form-group">
                             @Html.LabelFor(model => model.Subject, htmlAttributes: new { @class = "control-label col-md-2" })
                             <div class="col-md-10">
-                                @Html.EditorFor(model => model.Subject, new { htmlAttributes = new { @class = "form-control", placeholder = "ex. Report problem", id = "modelSubject" } }) <small style="color: white;">*<span style="color: #C126EA;">optional</span></small>
+                                @Html.EditorFor(model => model.Subject, new { htmlAttributes = new { @class = "form-control modelSubject", placeholder = "ex. Report problem", id = "modelSubject" } }) <small style="color: white;">*<span style="color: #C126EA;">optional</span></small>
                                 @* @Html.ValidationMessageFor(model => model.Subject, "", new { @class = "text-danger" })*@
                             </div>
                         </div>
@@ -31,7 +31,7 @@
                         <div class="form-group">
                             @Html.LabelFor(model => model.Body, htmlAttributes: new { @class = "control-label col-md-2" })
                             <div class="col-md-10">
-                                @Html.TextAreaFor(model => model.Body, new { rows = "3", cols = "20", @class = "form-control", placeholder = "Message", id = "modelBody" })
+                                @Html.TextAreaFor(model => model.Body, new { rows = "3", cols = "20", @class = "form-control modelBody", placeholder = "Message", id = "modelBody" })
                                 @*accept = ".jpg, .jpeg, .gif, .png"*@
                                 @Html.ValidationMessageFor(model => model.Subject, "", new { @class = "text-danger" })
                             </div>
@@ -67,7 +67,7 @@
                         <div class="form-group">
                             @Html.LabelFor(model => model.EmailFrom, htmlAttributes: new { @class = "control-label col-md-2" })
                             <div class="col-md-10">
-                                @Html.EditorFor(model => model.EmailFrom, new { htmlAttributes = new { @class = "form-control", placeholder = "ex. someone@gmail.com", id = "modelEmail" } })
+                                @Html.EditorFor(model => model.EmailFrom, new { htmlAttributes = new { @class = "form-control modelEmailFrom", placeholder = "ex. someone@gmail.com", id = "modelEmail" } })
                                 @* @Html.ValidationMessageFor(model => model.Subject, "", new { @class = "text-danger" })*@
                             </div>
                         </div>
@@ -75,7 +75,7 @@
                         <div class="form-group">
                             @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
                             <div class="col-md-10">
-                                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { type = "password", @class = "form-control", id = "modelPassword" } })
+                                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { type = "password", @class = "form-control modelPassword", id = "modelPassword" } })
                                 @* @Html.ValidationMessageFor(model => model.Subject, "", new { @class = "text-danger" })*@
                             </div>
                         </div>
@@ -124,14 +124,18 @@
                 </div>
             </div>
         </div>
+
+        <div>
+            @ViewBag.InvalidEmail
+        </div>
     </div>
 </body>
 </html>
 
 @section scripts{
     <script>
-
         $(".hide-div").hide();
+
         $(window).on("load", function () {
             var currentMessage = $(".message-success").attr("msgsuccess");
             if (currentMessage === "Your email has been sent!") {
@@ -139,8 +143,12 @@
                     icon: 'success',
                     title: 'Your email has been sent!',
                     showConfirmButton: false,
-                    timer: 2200
+                    timer: 2500
                 })
+                $(".modelSubject").val("");
+                $(".modelPassword").val("");
+                $(".modelEmailFrom").val("");
+                $(".modelBody").val("");
             }
 
             var messageError = $(".message-error").attr("msgerror");
@@ -153,33 +161,24 @@
             }
         })
 
+        $(window).on("keyup", function () {
+            if ($(".modelEmailFrom").val().includes("@@gmail.com") && $(".modelPassword").val() !== "" && $(".modelBody").val() !== "") {
+                $("#submitEmailForm").prop("disabled", false);
+            } else {
+                $("#submitEmailForm").prop("disabled", true);
+            }
+        })
+
         @*script for get current name of file for upload*@
         $('#file-input').change(function () {
-            console.log("ok")
+          @* 
             var i = $(this).prev('label').clone();
-            console.log(i);
+            console.log(i);*@
             var file = $('#file-input')[0].files[0].name;
             console.log(file);
             $(this).prev('label').text(file);
             $(".file-name").text(file);
         });
-
-
-        $(document).ready(function () {
-            validate();
-            $('#modelBody, #modelEmail, #modelPassword').change(validate);
-        });
-
-        function validate() {
-            if ($('#modelBody').val().length > 0 &&
-                $('#modelEmail').val().length > 0 &&
-                $('#modelPassword').val().length > 0) {
-                $("#submitEmailForm").prop("disabled", false);
-            }
-            else {
-                $("#submitEmailForm").prop("disabled", true);
-            }
-        }
     </script>
 }
 
@@ -206,20 +205,28 @@
     }
     .contact-us-text {
         margin-top: 40px;
-        font-size: 20px;
+        font-size: 23px;
         color: white;
         font-weight: 600;
         text-align: center;
     }
     .form-control {
-        background-color: #303b51;
-        color: white;
+        background-color: #303b51!important;
+        color: white!important;
         border: 1px solid #5ABD64;
     }
 
-    input[type=file]{
-        color: white;
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus,
+    input:-webkit-autofill:active {
+        transition: background-color 5000s ease-in-out 0s;
+        -webkit-text-fill-color: white;
     }
+
+        input[type=file] {
+            color: white;
+        }
 
     #submitEmailForm {
         align-content: center;
@@ -271,12 +278,16 @@
         border-radius: 35px;
     }
 
-        figure.snip1218 * {
-            -webkit-box-sizing: border-box;
-            box-sizing: border-box;
-            -webkit-transition: all 0.35s ease;
-            transition: all 0.35s ease;
-        }
+    .snip1218 {
+        border: 2px solid #5ABD64;
+    }
+
+    figure.snip1218 * {
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        -webkit-transition: all 0.35s ease;
+        transition: all 0.35s ease;
+    }
 
         figure.snip1218 img {
             max-width: 100%;
