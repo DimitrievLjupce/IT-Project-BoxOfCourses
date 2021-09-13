@@ -14,7 +14,7 @@
 <body>
     <div class="email-form container">
         <h1 class="contact-heading-h1">Let's <span class="contact-heading-span">get in touch</span>! 👋</h1>
-        <p class="contact-us-text">You have an idea, any question, or maybe you want to report problem? <span style="color: #5ABD64;" class="contact-me-label-heading">Contact me</span>.  <ion-icon style="color: orange; width: 25px; height: 28px; " name="flash"></ion-icon> </p>
+        <p class="contact-us-text">You have an idea, any question, or maybe you want to report problem? <span style="color: #5ABD64;" class="contact-me-label-heading">Contact me</span>.  <ion-icon style="color: orange; width: 25px; height: 28px;" name="flash"></ion-icon> </p>
         <div class="row">
             <div class="col-md-6">
                 <div class="form-horizontal email-contanct-form">
@@ -79,11 +79,13 @@
                                 @* @Html.ValidationMessageFor(model => model.Subject, "", new { @class = "text-danger" })*@
                             </div>
                         </div>
+
                         <div class="form-group">
                             <div class="col-md-10">
-                                <div class="form-group submit-form-field">
+                               @* <div class="form-group submit-form-field">
                                     <input id="submitEmailForm" type="submit" value="Send" class="btn btn-success text-center" style="color:black; width: 160px" />
-                                </div>
+                                </div>*@
+                                 <input  id="submitEmailForm" type="submit" value="Send" class="btn custom-send-button"/>
                             </div>
                         </div>
                     }
@@ -137,6 +139,7 @@
         $(".hide-div").hide();
 
         $(window).on("load", function () {
+            $("#submitEmailForm").prop("disabled", true);
             var currentMessage = $(".message-success").attr("msgsuccess");
             if (currentMessage === "Your email has been sent!") {
                 Swal.fire({
@@ -161,7 +164,7 @@
             }
         })
 
-        $(window).on("keyup", function () {
+        $(window).keyup(function () {
             if ($(".modelEmailFrom").val().includes("@@gmail.com") && $(".modelPassword").val() !== "" && $(".modelBody").val() !== "") {
                 $("#submitEmailForm").prop("disabled", false);
             } else {
@@ -169,7 +172,7 @@
             }
         })
 
-        @*script for get current name of file for upload*@
+        @*script to get current name of file for upload*@
         $('#file-input').change(function () {
           @* 
             var i = $(this).prev('label').clone();
@@ -183,14 +186,26 @@
 }
 
 <style>
-
+    .custom-send-button {
+        color: #5ABD64;
+        background-color: #303641;
+        width: 100px;
+        border-radius: 0;
+        margin-left: 22%;
+    }
+    .custom-send-button:hover {
+        background-color: #303a41;
+        border: 2px solid #5ABD64;
+        color: #5ABD64;
+     }
+        
     .email-form {
         padding: 60px 100px 0px 100px;
     }
     .contact-heading-h1 {
         color: white;
-        font-size: 45px;
-        font-weight: 700;
+        font-size: 50px;
+        font-weight: 800;
         margin-left: 30px;
         text-align: center;
     }
@@ -215,7 +230,7 @@
         color: white!important;
         border: 1px solid #5ABD64;
     }
-
+     @*css form not changing background-color of input field while selecting one of previous used emails*@
     input:-webkit-autofill,
     input:-webkit-autofill:hover,
     input:-webkit-autofill:focus,
@@ -228,9 +243,7 @@
             color: white;
         }
 
-    #submitEmailForm {
-        align-content: center;
-    }
+   
     .submit-form-field{
         text-align: center;
     }
@@ -276,10 +289,6 @@
         box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
         font-size: 16px;
         border-radius: 35px;
-    }
-
-    .snip1218 {
-        border: 2px solid #5ABD64;
     }
 
     figure.snip1218 * {

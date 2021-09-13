@@ -26,10 +26,31 @@ namespace BoxOfCourses.Controllers
             return View(db.Courses.ToList());
         }
 
+        public ActionResult RecentlyAddedCourses()
+        {
+            List<Course> listOfCourses = db.Courses.ToList();
+            listOfCourses.Reverse();
+            List<Course> finallist = new List<Course>();
+
+            foreach(var item in listOfCourses)
+            {
+                finallist.Add(new Course
+                {
+                    Id = item.Id,
+                    Name = item.Name,
+                    Category = item.Category,
+                    Level = item.Level,
+                    ImageURL = item.ImageURL,
+                    VideoURL = item.VideoURL,
+                    Type = item.Type
+                });
+            }
+            return PartialView(finallist);
+        }
+
         // GET: Courses/Details/5
         public ActionResult Details(int? id)
         {
-
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -43,6 +64,7 @@ namespace BoxOfCourses.Controllers
             return View(course);
         }
 
+        [Authorize(Roles = "Administrator")]
         // GET: Courses/Create
         public ActionResult Create()
         {
@@ -85,6 +107,7 @@ namespace BoxOfCourses.Controllers
             return View(course);
         }
 
+        [Authorize(Roles = "Administrator")]
         // GET: Courses/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -113,8 +136,9 @@ namespace BoxOfCourses.Controllers
             };*/
             return View(course);
         }
-        
 
+
+        [Authorize(Roles = "Administrator")]
         // POST: Courses/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.

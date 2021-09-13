@@ -6,10 +6,10 @@
 
 <div class="container cont-login">
     <div class="row">
-        <div class="col-md-4">
-            <img class="login-gif" src="~/Content/photos/login-gif.gif" />
+        <div class="col-md-5">
+            <img class="login-gif img-responsive" src="~/Content/photos/login-gif.gif" />
         </div>
-        <div class="col-md-8">
+        <div class="col-md-7 container-form">
             <section id="loginForm">
                 <h1 class="login-heading">Here to get <span class="text-green-login-welcome">welcomed</span>!</h1>
                 @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
@@ -21,7 +21,7 @@
                     <div class="form-group">
                         @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label text-green-login-label" })
                         <div class="col-md-10">
-                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder ="ex. someone@gmail.com" })
                             @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
                         </div>
                     </div>
@@ -42,10 +42,11 @@
                     </div>
                     <div class="form-group">
                         <div class="col-md-offset-2 col-md-10">
-                            <input type="submit" value="Log in" class="btn btn-success login-button"  />
+                            <input type="submit" value="Log in" class="btn btn-success custom-login-button"  />
                         </div>
                     </div>
                     <p style="margin-top: 50px;">
+                        <span style="margin-left: 8%; color: #5ABD64;">Don't have an account yet?</span> <br />
                         <a class="register-as-new-user" href="~/Account/Register">Register as a new user</a>
                         @*@Html.ActionLink("Register as a new user", "Register")*@
                     </p>
@@ -70,16 +71,18 @@
 <style>
     .cont-login {
         margin-top: 120px;
-        margin-bottom: 100px;
+        margin-bottom: 60px;
     }
 
     .login-heading {
-        color: #C126EA;
-        font-size: 40px;
+        color: white;
+        font-size: 60px;
         font-weight: 700;
-        padding: 30px;
+        margin-bottom: 30px !important;
+        text-align: center;
     }
-    .login-heading-small{
+
+    .login-heading-small {
         font-size: 20px;
     }
 
@@ -90,18 +93,22 @@
         border: 5px solid #C126EA;
     }
     #loginForm{
-        margin-left: 150px;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
     }
     .text-green-login-label {
         color: #5ABD64;
+        margin-right: 10px;
     }
     .text-green-login-welcome {
         color: #5ABD64;
     }
     .register-as-new-user{
         color: orange!important;
-        text-decoration: none;
-        margin-left: 50px;
+        text-decoration: none!important;
+        margin-left: 5%;
         font-size: 20px;
     }
     .label-remember-me {
@@ -116,5 +123,22 @@
         background-color: #303b51;
         color: white;
         border: 1px solid #5ABD64;
+    }
+
+    .custom-login-button {
+        color: #5ABD64;
+        background-color: #303641;
+        width: 100px;
+        border-radius: 0;
+        margin-left: 5%;
+    }
+
+    @*css form not changing background-color of input field while selecting one of previous used emails*@
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus,
+    input:-webkit-autofill:active {
+        transition: background-color 5000s ease-in-out 0s;
+        -webkit-text-fill-color: white;
     }
 </style>

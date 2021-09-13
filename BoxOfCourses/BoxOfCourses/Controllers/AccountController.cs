@@ -154,8 +154,25 @@ namespace BoxOfCourses.Controllers
             {
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
+
                 if (result.Succeeded)
                 {
+                    var currentUser = UserManager.FindByEmail(model.Email);
+                    if (currentUser == null)
+                    {
+                        throw new HttpException(404, "There is no user with this email " + model.Email);
+                    }
+
+                    if (model.Email == "administrator@gmail.com")
+                    {
+                        /* UserManager.AddToRole(currentUser.Id, "Admin");*/
+                        await UserManager.AddToRoleAsync(currentUser.Id, "Administrator");
+                    }
+                    else
+                    {
+                        await UserManager.AddToRoleAsync(currentUser.Id, "User");
+                    }
+
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
 
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
@@ -168,6 +185,8 @@ namespace BoxOfCourses.Controllers
                 }
                 AddErrors(result);
             }
+
+
 
             // If we got this far, something failed, redisplay form
             return View(model);

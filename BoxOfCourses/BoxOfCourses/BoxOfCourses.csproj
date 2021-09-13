@@ -372,11 +372,8 @@
     <Content Include="Content\DataTables\swf\flashExport.swf" />
     <Content Include="Content\photos\3WyW.gif" />
     <Content Include="Content\photos\creator.jpg" />
-    <Content Include="Content\photos\bulb-mindset.jpg" />
-    <Content Include="Content\photos\carousel-1.png" />
     <Content Include="Content\photos\code-1.png" />
     <Content Include="Content\photos\code-2png.png" />
-    <Content Include="Content\photos\delete.jpg" />
     <Content Include="Content\photos\image 2.jpg" />
     <Content Include="Content\photos\image 3.jpg" />
     <Content Include="Content\photos\image 4.jpg" />
@@ -386,6 +383,7 @@
     <Content Include="Content\photos\lets-build.png" />
     <Content Include="Content\photos\login-gif.gif" />
     <Content Include="Content\photos\logo-navbar.png" />
+    <Content Include="Content\photos\play-button-course.png" />
     <Content Include="Content\photos\SnakeGame.png" />
     <Content Include="Content\photos\white-star.png" />
     <Content Include="Content\photos\whiteStar-1.png" />
@@ -540,6 +538,7 @@
     <Content Include="Views\ReviewModels\Details.cshtml" />
     <Content Include="Views\ReviewModels\Edit.cshtml" />
     <Content Include="Views\ReviewModels\Index.cshtml" />
+    <Content Include="Views\Courses\RecentlyAddedCourses.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

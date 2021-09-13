@@ -83,7 +83,7 @@
 
     input[type=submit] {
         margin-left: 3.4em;
-        height: 2.9em;
+        height: 2.8em;
         padding: 0.2em 1em 0.2em 2.30em;
         font-size: 1em;
         font-weight: bold;
@@ -123,4 +123,12 @@
         border: 1px solid #5ABD64;
     }
 
+    @*css form not changing background-color of input field while selecting one of previous used emails*@
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus,
+    input:-webkit-autofill:active {
+        transition: background-color 5000s ease-in-out 0s;
+        -webkit-text-fill-color: white;
+    }
 </style>

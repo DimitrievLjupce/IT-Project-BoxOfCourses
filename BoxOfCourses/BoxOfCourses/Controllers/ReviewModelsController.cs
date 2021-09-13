@@ -35,7 +35,9 @@ namespace BoxOfCourses.Controllers
             return View(reviewModel);
         }
 
+
         // GET: ReviewModels/Create
+        [Authorize]
         public ActionResult Create()
         {
             ReviewModel model = new ReviewModel();
@@ -117,8 +119,10 @@ namespace BoxOfCourses.Controllers
         public ActionResult Delete(int id)
         {
             ReviewModel reviewModel = db.Reviews.Find(id);
-            db.Reviews.Remove(reviewModel);
-            db.SaveChanges();
+            if(User.Identity.Name == reviewModel.UserName || User.Identity.Name == "administrator@gmail.com") { 
+                db.Reviews.Remove(reviewModel);
+                db.SaveChanges();
+            }
             return RedirectToAction("Index");
         }
 

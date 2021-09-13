@@ -234,7 +234,8 @@ table.dataTable,
 table.dataTable th,
 table.dataTable td {
   -webkit-box-sizing: content-box;
-  box-sizing: content-box;
+  box-sizing: border-box;
+  max-width: 200px!important;
 }
 
 /*

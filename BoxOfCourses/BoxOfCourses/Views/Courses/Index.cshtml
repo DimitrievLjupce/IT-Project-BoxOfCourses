@@ -54,9 +54,16 @@
     <a class="btnn" href="#">
         <div class="heading-container"><h2 class="RecommendedCourses btn__label ">Recommended courses from the <span class="text-green-400">BOX</span></h2></div>
     </a>
-    <p>
-        @Html.ActionLink("Create new Course", "Create", "Course", new { @class = "btn btn-success CreateNewCourseButton" })
-    </p>
+    @if (User.IsInRole("Administrator"))
+    {
+        <p>
+            @Html.ActionLink("Create new Course", "Create", "Course", new { @class = "btn btn-success CreateNewCourseButton" })
+        </p>
+    }
+    else
+    {
+        <p id="hidden-field" style="text-indent: -9999px; margin-bottom: 50px;">hidden-field-text</p>
+    }
 
     <table id="CoursesTable" class="table">
         <thead>
@@ -71,7 +78,7 @@
                     @Html.DisplayNameFor(model => model.Level)
                 </th>
                 <th class="text-center">
-                    Image
+                    Photo
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.Type)
@@ -93,20 +100,33 @@
                         @Html.DisplayFor(modelItem => item.Level, new { @class = "course-level" })
                     </td>
                     <td class="text-center">
-                        <img class="image" style="max-width: 150px; max-height: 120px" src="@Html.DisplayFor(modelItem => item.ImageURL)" />
+                        <img class="image" style="max-width: 150px; max-height: 120px; height: 100%; padding: 5px" src="@Html.DisplayFor(modelItem => item.ImageURL)" />
                     </td>
                     <td class="courseTypeCoulmn">
                         @Html.DisplayFor(modelItem => item.Type, new { @class = "modelType" })
                     </td>
-                    <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-info editcourseButton" }) <span class="vertical-line-between">|</span>
-                        @Html.ActionLink("Take course", "Details", new { id = item.Id, @class = "takeCourse" }, new { @class = "btn btn-success takecourseButton" }) <span class="vertical-line-between">|</span>
-                        <button data-course-name="@item.Name" data-course-id="@item.Id" class="btn btn-danger js-delete">Delete</button>
+                    <td class="buttons-td">
+                        @if (User.IsInRole("Administrator"))
+                        {
+                            @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-info editcourseButton" }) <span class="vertical-line-between">|</span>
+                        }
+
+                        @Html.ActionLink("Take course", "Details", new { id = item.Id }, new { @class = " btn takecourseButton" })
+
+                        @if (User.IsInRole("Administrator"))
+                        {
+                            <span class="vertical-line-between">|</span> <button data-course-name="@item.Name" data-course-id="@item.Id" class="btn btn-danger js-delete">Delete</button>
+                        }
+                        @*<a href="/Courses/Details/@item.Id">Take course 1</a>*@
                     </td>
                 </tr>
             }
         </tbody>
     </table>
+
+    @{
+        Html.RenderPartial("RecentlyAddedCourses");
+    }
 </div>
 
 <div class="container-fluid">
@@ -118,11 +138,14 @@
     </div>
 </div>
 
+<div> </div>
+
 <style>
+
     .cont {
         padding-top: 20px;
     }
-    
+
     .carousel-container {
         padding-top: 34px;
     }
@@ -148,7 +171,7 @@
     }
     .carousel-img {
         width: 100%;
-        height: 100%!important;     
+        height: 100%!important;
     }
 
     .cont-fluid {
@@ -176,35 +199,57 @@
     }
 
     th {
-        color: #5ABD64;
+        color: #FF5DDA;
+        text-transform: uppercase;
+        font-size: 13px;
+        letter-spacing: 4px;
+        text-align: center;
     }
 
     .courseNameCoulmn {
         color: white;
         font-weight: 700;
         font-size: 20px;
+        vertical-align: middle!important;
+        max-width: 220px;
+        height: 120px;
     }
 
     .courseCategoryCoulmn {
         color: grey;
         font-size: 15px;
-    }
-
-    .takeCourse {
-        color: green;
+        vertical-align: middle !important;
     }
 
     .courseTypeCoulmn {
-        color: #D83319;
+        color: #a8abb3;
         font-size: 15px;
         font-weight: bolder;
+        vertical-align: middle !important;
     }
 
+    .course-level-column {
+        vertical-align: middle !important;
+    }
+    .buttons-td{
+        vertical-align: middle!important;
+    }
     .takecourseButton {
-        color: black;
-        font-size: 15px;
+        color: #C126EA;
+        font-size: 16px;
+        font-weight: 600;
+        border: 3px solid #C126EA;
+        padding: 15px 25px;
+        text-decoration: none;
         font-weight: 500;
     }
+        .takecourseButton:hover {
+            color: #C126EA;
+            text-decoration: none;
+            box-shadow: 0 0 5px #C126EA, 0 0 25px #C126EA, 0 0 50px #C126EA, 0 0 200px #C126EA;
+            -webkit-box-reflect: below 1px linear-gradient(transparent, #0005);
+        }
+
 
     .editcourseButton {
         color: black;
@@ -213,7 +258,7 @@
     }
 
     .deletecourseButton {
-        background-color: #E0634F !important;
+        background-color: #E0634F!important;
         color: black;
         font-size: 15px;
         font-weight: 500;
@@ -266,8 +311,7 @@
         width: auto;
     }
 
-/* Electrons */
-
+    /* Electrons */
         .btnn::before,
         .btnn::after {
             content: "";
@@ -295,7 +339,6 @@
 
 
     /* Hover */
-
     .btnn:hover::before,
     .btnn:hover::after,
     .btnn:active::before,
@@ -359,6 +402,26 @@
     .js-delete{
         color: black;
     }
+    tr:hover{
+        background-color: #303641!important;
+    }
+
+    tr:nth-child(even) {
+        background-color: #171c26;
+    }
+
+    .vertical-line-between {
+        color: #585d69;
+    }
+    input[type="search"] {
+        background-color: #303b51;
+        color: white;
+        border: 1px solid #C126EA;
+        font-size: 13px!important;
+        width: 250px!important;
+        font-weight: 300;
+    }
+
 </style>
 
 @section scripts{
@@ -367,50 +430,60 @@
         $(document).ready(function () {
 
             var table = $("#CoursesTable").DataTable();
-
             //checks the searchtext from clicked icon on homepage, and its all about searching the table directly
             var searchText = window.location.search.substring(1);
             if (searchText === "c") {
                 searchText = searchText + "#";
             }
             if (searchText.length > 0) {
-                $(this).scrollTop(330); 
+                $(this).scrollTop(330);
             }
             table.search(searchText).draw();
             tempTable = table;
 
+            //placeholder for input type search here, instead of changing in jquery table props.
+            $("input[type='search']").attr('placeholder', 'Search stuff.')
+
+
         });
 
-            $("#CoursesTable .js-delete").on("click", function () {
-                var button = $(this);
-                bootbox.confirm({
-                    message: "Are you sure you want to delete the " + button.attr("data-course-name") + " course?",
-                    buttons: {
-                        confirm: {
-                            label: 'Yes',
-                            className: 'btn-success'
-                        },
-                        cancel: {
-                            label: 'No',
-                            className: 'btn-danger'
-                        }
-                    },
-                    callback: function (result) {
-                        if (result) {
-                            $.ajax({
-                                url: "/Courses/Delete/" + button.attr("data-course-id"),
-                                method: "GET",
-                                success: function () {
-                                    tempTable.row(button.parents("tr")).remove().draw();
-                                },
-                                error: function (err) {
-                                    console.log(err);
-                                }
-                            })
-                        }
-                    }
-                });
+        $(window).on("load", function () {
+            $.ajax({
+                url: "/Courses/RecentlyAddedCourses",
+                method: "GET"
             })
+        }) 
 
+        //ajax call for deleting specific course from table
+        $("#CoursesTable .js-delete").on("click", function () {
+            var button = $(this);
+            bootbox.confirm({
+                message: "Are you sure you want to delete the " + button.attr("data-course-name") + " course?",
+                buttons: {
+                    confirm: {
+                        label: 'Yes',
+                        className: 'btn-success'
+                    },
+                    cancel: {
+                        label: 'No',
+                        className: 'btn-danger'
+                    }
+                },
+                callback: function (result) {
+                    if (result) {
+                        $.ajax({
+                            url: "/Courses/Delete/" + button.attr("data-course-id"),
+                            method: "GET",
+                            success: function () {
+                                tempTable.row(button.parents("tr")).remove().draw();
+                            },
+                            error: function (err) {
+                                console.log(err);
+                            }
+                        })
+                    }
+                }
+            });
+        })
     </script>
 }

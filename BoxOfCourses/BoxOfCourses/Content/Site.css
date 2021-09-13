@@ -61,23 +61,23 @@ textarea {
 
 .course-level-beginner {
     color: #5ABD64;
-    font-size: 17px;
-    font-style: italic;
-    font-weight: bolder;
+    font-size: 15px;
+    text-transform: uppercase;
+    text-align: center;
 }
 
 .course-level-intermediate {
     color: #F08A35;
-    font-size: 17px;
-    font-style: italic;
-    font-weight: bolder;
+    font-size: 15px;
+    text-transform: uppercase;
+    text-align: center;
 }
 
 .course-level-advanced {
-    color: #D83319;
-    font-size: 17px;
-    font-style: italic;
-    font-weight: bolder;
+    color: #F73030;
+    font-size: 15px;
+    text-transform: uppercase;
+    text-align: center;
 }
 
 /*style for search-tab and labels*/
@@ -253,7 +253,6 @@ input[type="search"] {
 .modal-dialog-temp{
     top: 35%;
 }
-
 
 /*body tuka pocnuva za slikata hover - contact*/
 

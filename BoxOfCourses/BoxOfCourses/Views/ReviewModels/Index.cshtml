@@ -7,14 +7,14 @@
 <div class="container cont-reviews-table" style="color: white; ">
 
     <p style="color:white; font-size: 40px; font-weight: 700" class="heading-index-reviews">
-        Want to <span style="color: #5ABD64">share your opinion</span> with us? <a href="~/ReviewModels/Create"><ion-icon style="color: orange; font-size: 30px; padding-top: 9px" name="duplicate"></ion-icon></a>
+        Want to <span style="color: #5ABD64">share your opinion</span> with us? <a href="~/ReviewModels/Create">  <ion-icon style="color: orange; font-size: 30px; padding-top: 9px" name="duplicate"></ion-icon></a> 
     </p>
     <div class="table-reviews-container">
         <table class="table table-reviews" id="ReviewsTable">
             <thead>
                 <tr>
                     <th>
-                        @Html.DisplayNameFor(model => model.UserName)
+                        User
                     </th>
                     <th>
                         @Html.DisplayNameFor(model => model.Category)
@@ -35,11 +35,11 @@
                         <td class="username-td">
                             @Html.DisplayFor(modelItem => item.UserName)
                         </td>
-                        <td style="color: grey;  font-weight: 700">
+                        <td class="category-table-column">
                             @Html.DisplayFor(modelItem => item.Category)
                         </td>
-                        <td>
-                            <span style="font-weight: 500; font-size: 17px">@Html.DisplayFor(modelItem => item.Comment)</span>
+                        <td class="comment-section-table">
+                            @Html.DisplayFor(modelItem => item.Comment)
                         </td>
                         <td>
                             @for (int i = 0; i < item.ReviewValue; i++)
@@ -49,7 +49,7 @@
                             @*@Html.DisplayFor(modelItem => item.ReviewValue)*@
                         </td>
                         <td>
-                            @if (User.Identity.Name == item.UserName)
+                            @if (User.Identity.Name == item.UserName || User.Identity.Name == "administrator@gmail.com")
                             {
                                 @*@Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger" })*@
                             <button data-course-id="@item.Id" class="btn btn-danger js-delete">Delete</button>
@@ -76,11 +76,42 @@
     }
     th {
         color: #5ABD64;
+        text-align: center;
+        text-transform: uppercase;
+        font-size: 13px;
+        letter-spacing: 2px;
+    }
+    td{
+        vertical-align: middle;
+        text-align: center;
     }
     .username-td{
         color: lightblue;
         font-size: 15px;
     }
+    .category-table-column {
+        color: grey;
+        font-size: 15px;
+        font-weight: 700;
+        width: 100px;
+    }
+    #ReviewsTable_filter label {
+        color: #C126EA;
+        font-size: 17px;
+    }
+    .comment-section-table{
+        max-width: 150px;
+        text-align: justify;
+    }
+
+    tr:hover {
+        background-color: #303641!important;
+    }
+
+    tr:nth-child(even) {
+        background-color: #171c26;
+    }
+ 
 </style>
 
 @section scripts{
@@ -89,6 +120,7 @@
             var table = $(".table-reviews").DataTable();
 
             tempTable = table;
+
         })
 
 

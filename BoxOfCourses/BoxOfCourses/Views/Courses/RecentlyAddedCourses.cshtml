@@ -1,0 +1,123 @@
+﻿@model IEnumerable<BoxOfCourses.Models.Course>
+
+<div style="font-size: 30px;">
+    <div class="row newest-courses-container">
+        <h1>Newest courses</h1>
+        @{
+            var list = Model.ToList();
+            list.Reverse();
+            var counter = 0;
+            foreach (var item in list)
+            {
+                counter++;
+                if (counter <= 5)
+                {
+                    <a href="/Courses/Details/@item.Id" class="anchor-current-course">
+                        <div class="col-sm-2 each-column">
+                            <img class="course-photo" src="@Html.DisplayFor(modelItem=> item.ImageURL)" />
+                            <p class="display-course-name">@Html.DisplayFor(modelItem => item.Name) <span class="embed-course-level-info"> - @Html.DisplayFor(modelItem => item.Level)</span></p>
+                            @* <a class="watch-course" href="/Courses/Details/@item.Id">Watch course</a>*@
+                            <div class="middle">
+                                <img style="width: 65px; height: 60px" src="~/Content/photos/play-button-course.png" />
+                            </div>
+                        </div>
+                    </a>
+                }
+            }
+        }
+        <div>
+        </div>
+    </div>
+</div>
+
+<style>
+    h1 {
+        color: white;
+        font-weight: 800;
+        margin-top: 80px;
+        margin-bottom: 30px;
+        font-size: 16px;
+    }
+
+    .each-column {
+        border: 0.5px solid #303b51;
+        max-width: 190px;
+        height: 170px;
+        max-height: 300px;
+        padding: 20px 35px;
+        display: inline-block;
+        margin: auto;
+        width: 100%;
+        vertical-align: text-top;
+        margin-right: 2%;
+        margin-top: 5px;
+    }
+
+    .display-course-name {
+        font-size: 12px;
+        font-weight: 700;
+        color: white;
+        width: 100%;
+        height: 30px;
+        max-height: 30px;
+        vertical-align: middle;
+        text-align: center;
+        padding-top: 20px;
+    }
+
+    .course-photo {
+        max-width: 80px;
+        position: relative;
+        left: 17%;
+        width: 80px;
+        height: 65px;
+        opacity: 1;
+        transition: .5s ease;
+        backface-visibility: hidden;
+    }
+
+    .embed-course-level-info {
+        font-size: 10px;
+        color: #C126EA;
+    }
+
+    .anchor-current-course {
+        height: 170px !important;
+    }
+
+    .newest-courses-container {
+        margin-bottom: 100px;
+    }
+
+    .middle {
+        transition: .5s ease;
+        opacity: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        text-align: center;
+    }
+
+    .each-column:hover {
+        background-color: #303b51;
+        border: 0.5px solid #C126EA;
+        box-shadow: 0 0 5px #37435c, 0 0 25px #37435c, 0 0 50px #37435c, 0 0 200px #37435c;
+        @*-webkit-box-reflect: below 1px linear-gradient(transparent, #0005);*@
+    }
+
+        .each-column:hover .course-photo {
+            opacity: 0.1;
+        }
+
+        .each-column:hover p {
+            opacity: 0.1;
+        }
+
+        .each-column:hover .middle {
+            opacity: 2;
+            transition: .2s ease;
+        }
+</style>
+
