@@ -69,7 +69,7 @@
 
     <div class="bottom-cont row">
         <div class="col-md-7 fade-div-2">
-            <img class="lets-build" src="~/Content/photos/lets-build.png" />
+            <img class="lets-build" src="~/Content/photos/coding.gif" />
         </div>
         <div class="col-md-5 fade-div-2 ">
             <h2 class="build-together">Ready to learn something <span class="text-green-500-together">together</span>?</h2>
@@ -118,13 +118,14 @@
     <a class="social-links-icons-a" href="https://github.com/DimitrievLjupce" target="_blank"><ion-icon class="icon-github" name="logo-github"></ion-icon></a>
 </div>
 
-<div class="login-here" login-here-data="@ViewBag.LoginSuccess"></div>
-<div class="register-here" register-here-data="@ViewBag.RegisterSuccess"></div>
+<div style="display: none" class="login-here" login-here-data="@ViewBag.LoginSuccess"></div>
+<div style="display: none" class=" register-here" register-here-data="@ViewBag.RegisterSuccess"></div>
+<div style="display: none" class=" logoff-here" logoff-here-data="@ViewBag.LogOffSuccess"></div>
 
-❤️
+
 
 <style>
-
+    
     .cont-top {
         margin-top: 70px;
     }
@@ -440,6 +441,17 @@
             })
         }
 
+        if ($(".logoff-here").attr("logoff-here-data") === "logoffsuccess") {
+            Swal.fire({
+                icon: 'success',
+                title: 'You have been logged out!',
+                showConfirmButton: false,
+                timer: 1500,
+                timerProgressBar: true
+            })
+        }
+
+       
         //function for footer hover icons
         $(".icon-java").on("mouseover", function () {
             $(".icon-java").attr("src", 'https://img.icons8.com/ios/48/000000/java-coffee-cup-logo--v1.png')
@@ -565,6 +577,15 @@
             $(".icon-mysql").attr("src", 'https://img.icons8.com/ios-filled/48/000000/mysql-logo.png')
         }).on("mouseout", function () {
             $(".icon-mysql").attr("src", 'https://img.icons8.com/color/48/000000/mysql-logo.png')
+        })
+
+        //deny social links icons to get into footer with course-icons
+        $(window).scroll(function (e) {
+            if ($(this).scrollTop() >= 1000) {
+                $(".icon-bar-social-links").fadeOut("slow");
+            } else {
+                $(".icon-bar-social-links").fadeIn("slow");
+            }
         })
     </script>
 }

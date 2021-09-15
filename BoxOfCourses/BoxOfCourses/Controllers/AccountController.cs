@@ -412,6 +412,7 @@ namespace BoxOfCourses.Controllers
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+            TempData["logoffSuccess"] = "logoffsuccess";
             return RedirectToAction("Index", "Home");
         }
 

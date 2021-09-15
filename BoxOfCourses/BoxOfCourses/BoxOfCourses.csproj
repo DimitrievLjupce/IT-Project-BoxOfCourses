@@ -371,6 +371,9 @@
     <Content Include="Content\DataTables\images\sort_desc_disabled.png" />
     <Content Include="Content\DataTables\swf\flashExport.swf" />
     <Content Include="Content\photos\3WyW.gif" />
+    <Content Include="Content\photos\code-coding.gif" />
+    <Content Include="Content\photos\code-it.gif" />
+    <Content Include="Content\photos\coding.gif" />
     <Content Include="Content\photos\creator.jpg" />
     <Content Include="Content\photos\code-1.png" />
     <Content Include="Content\photos\code-2png.png" />

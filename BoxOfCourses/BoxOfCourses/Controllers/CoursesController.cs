@@ -80,12 +80,18 @@ namespace BoxOfCourses.Controllers
             model.Levels.Add("Advanced");
 
             model.Categories = new System.Collections.Generic.List<string>();
-            model.Categories.Add("Back-End Development");
+            model.Categories.Add("Fundamentals of programming");
+            model.Categories.Add("Crash Course");
+            model.Categories.Add("Tutorial");
             model.Categories.Add("Front-End Development");
+            model.Categories.Add("Back-End Development");
+            model.Categories.Add("Web Development");
+            model.Categories.Add("Debugging");
+            model.Categories.Add("Artificial Intelligence (AI)");
             model.Categories.Add("Android Development");
             model.Categories.Add("IOS Development");
-            model.Categories.Add("Web Development");
             model.Categories.Add("SQA");
+            model.Categories.Add("DataBase design");
 
             return View(model);
         }

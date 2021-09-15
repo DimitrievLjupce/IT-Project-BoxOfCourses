@@ -16,7 +16,6 @@
                         <div class="col-sm-2 each-column">
                             <img class="course-photo" src="@Html.DisplayFor(modelItem=> item.ImageURL)" />
                             <p class="display-course-name">@Html.DisplayFor(modelItem => item.Name) <span class="embed-course-level-info"> - @Html.DisplayFor(modelItem => item.Level)</span></p>
-                            @* <a class="watch-course" href="/Courses/Details/@item.Id">Watch course</a>*@
                             <div class="middle">
                                 <img style="width: 65px; height: 60px" src="~/Content/photos/play-button-course.png" />
                             </div>
@@ -103,7 +102,7 @@
     .each-column:hover {
         background-color: #303b51;
         border: 0.5px solid #C126EA;
-        box-shadow: 0 0 5px #37435c, 0 0 25px #37435c, 0 0 50px #37435c, 0 0 200px #37435c;
+        box-shadow: 0 5px #37435c, 25px #37435c, 50px #37435c, 200px #37435c;
         @*-webkit-box-reflect: below 1px linear-gradient(transparent, #0005);*@
     }
 

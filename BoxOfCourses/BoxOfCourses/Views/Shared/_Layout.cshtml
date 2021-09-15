@@ -55,6 +55,12 @@
                 color: #5ABD64 !important;
             }
     </style>
+
+    <script>
+        window.addEventListener('load', (event) => {
+            console.log('page is fully loaded');
+        });
+    </script>
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top navbar-default ">
@@ -66,7 +72,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a href="~/Home/Index" class="logo-img-navbar"><img id="logo-navbar-a" src="~/Content/photos/logo-navbar.png" width="50" height="50" class="navbar-left" /></a>
-                @Html.ActionLink("BoxOfCourses", "Index", "Home", new { area = "" }, new { id="app-title", @class = "navbar-brand", style="color:white"})
+                @Html.ActionLink("BoxOfCourses", "Index", "Home", new { area = "" }, new { id = "app-title", @class = "navbar-brand", style = "color:white" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -83,21 +89,21 @@
     </div>
     <div class="container-fluid body-content">
         @*<div class="icon-bar text-right icon-bar-social-links">
-         <a class ="social-links-icons-a icon-instagram" href="https://www.finki.ukim.mk/"><ion-icon class="icon-instagram" name="logo-instagram"></ion-icon></a>
-         <a class ="social-links-icons-a" href="https://www.finki.ukim.mk/"><ion-icon class="icon-youtube" name="logo-youtube"></ion-icon></a>
-         <a class ="social-links-icons-a" href="https://www.finki.ukim.mk/"><ion-icon class="icon-twitter" name="logo-twitter"></ion-icon></a>
-         <a class ="social-links-icons-a" href="https://github.com/DimitrievLjupce"><ion-icon class="icon-github" name="logo-github"></ion-icon></a>
+             <a class ="social-links-icons-a icon-instagram" href="https://www.finki.ukim.mk/"><ion-icon class="icon-instagram" name="logo-instagram"></ion-icon></a>
+             <a class ="social-links-icons-a" href="https://www.finki.ukim.mk/"><ion-icon class="icon-youtube" name="logo-youtube"></ion-icon></a>
+             <a class ="social-links-icons-a" href="https://www.finki.ukim.mk/"><ion-icon class="icon-twitter" name="logo-twitter"></ion-icon></a>
+             <a class ="social-links-icons-a" href="https://github.com/DimitrievLjupce"><ion-icon class="icon-github" name="logo-github"></ion-icon></a>
 
-        @* <ion-icon name="logo-youtube"></ion-icon>
-         <ion-icon name="logo-twitter"></ion-icon>*@
+            @* <ion-icon name="logo-youtube"></ion-icon>
+             <ion-icon name="logo-twitter"></ion-icon>*@
     </div>
-        @RenderBody()
-        <hr style="border: 0.5px solid #C126EA;"/>
-        <div class="container">
-            <footer>
-                <p class="footer-p"> <span class="dateTimeNowYear-footer">&copy; @DateTime.Now.Year </span>- Ljupcho Dimitriev </p>
-            </footer>
-        </div>
+    @RenderBody()
+    <hr style="border: 0.5px solid #C126EA;" />
+    <div class="container">
+        <footer>
+            <p class="footer-p"> <span class="dateTimeNowYear-footer">&copy; @DateTime.Now.Year </span>- Ljupcho Dimitriev </p>
+        </footer>
+    </div>
 
 
     @Scripts.Render("~/bundles/jquery")
@@ -110,3 +116,4 @@
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
 </html>
+

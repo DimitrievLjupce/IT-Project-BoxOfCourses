@@ -41,7 +41,7 @@
         $(window).scroll(function (e) {
             if ($(this).scrollTop() > 450) {
                 $(".icon-bar-social-links-index-table").fadeIn("slow");
-            }
+            } 
             else {
                 $(".icon-bar-social-links-index-table").fadeOut();
             }

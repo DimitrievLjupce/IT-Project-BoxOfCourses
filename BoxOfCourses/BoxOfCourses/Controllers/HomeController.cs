@@ -16,6 +16,7 @@ namespace BoxOfCourses.Controllers
         {
             ViewBag.LoginSuccess = TempData["loginsuccess"];
             ViewBag.RegisterSuccess = TempData["registersuccess"];
+            ViewBag.LogOffSuccess = TempData["logoffSuccess"];
             return View();
         }
 

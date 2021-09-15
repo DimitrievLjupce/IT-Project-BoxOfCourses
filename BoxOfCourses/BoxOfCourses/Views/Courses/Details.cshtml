@@ -11,19 +11,16 @@
             <iframe class="iframe-video" height="475" width="800" src="@Html.DisplayFor(m=>m.VideoURL)" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
     </div>
-    @*<p>
-        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-        @Html.ActionLink("Back to List", "Index")
-    </p>*@
-
     <div class="form-group">
         <div class=" col-md-10">
-            <a style="color:black!important" href="~/Courses/Index" id="" class="btn btn-warning">Back to the list</a> |
-            @Html.ActionLink("Edit this course", "Edit", new { id = Model.Id }, new { @class = "btn btn-info", @style = "color:black!important;" })
+            <a style="color:black!important" href="~/Courses/Index" id="" class="btn btn-warning">Back to the list</a>
+            @if (User.IsInRole("Administrator"))
+            {
+                @*  | @Html.ActionLink("Edit this course", "Edit", new { id = Model.Id }, new { @class = "btn btn-info", @style = "color:black!important;" })*@
+                @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class = "btn btn-info editcourseButton", @style = "color:black!important;" }) 
+            }
         </div>
     </div>
-
-
 </div>
 
 @section scripts{

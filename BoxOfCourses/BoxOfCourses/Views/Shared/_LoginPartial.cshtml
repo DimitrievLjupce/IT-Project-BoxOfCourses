@@ -9,7 +9,7 @@
         <li>
             @Html.ActionLink("Hello 👋 " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { id="username-actionlink", title = "Manage" })
         </li>
-        <li><a class="log-off-link" href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+        <li class="log-off-li-link"><a class="log-off-link" href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
     </ul>
     }
 }
@@ -20,3 +20,5 @@ else
         <li class="li-green-log">@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
     </ul>
 }
+
+
