@@ -7,6 +7,7 @@
 @*script for sweetalert "swal"*@
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+
 <div class="container cont-top">
     <div class="row">
         <div class="container">
@@ -125,7 +126,7 @@
 
 
 <style>
-    
+
     .cont-top {
         margin-top: 70px;
     }
@@ -399,7 +400,7 @@
         //function for animated divs while scrolling
         $(window).scroll(function () {
             var windowBottom = $(this).scrollTop() + $(this).innerHeight();
-          
+
             $(".fadediv").each(function () {
                 var objectBottom = $(this).offset().top + $(this).outerHeight();
 
@@ -443,15 +444,15 @@
 
         if ($(".logoff-here").attr("logoff-here-data") === "logoffsuccess") {
             Swal.fire({
-                icon: 'success',
+                icon: 'info',
                 title: 'You have been logged out!',
                 showConfirmButton: false,
                 timer: 1500,
-                timerProgressBar: true
+                timerProgressBar: true,
             })
         }
 
-       
+
         //function for footer hover icons
         $(".icon-java").on("mouseover", function () {
             $(".icon-java").attr("src", 'https://img.icons8.com/ios/48/000000/java-coffee-cup-logo--v1.png')
@@ -496,7 +497,7 @@
         })
 
         $(".icon-ruby").on("mouseover", function () {
-            $(".icon-ruby").attr("src", 'https://img.icons8.com/ios-filled/48/000000/ruby-programming-language.png')
+            $(".icon-ruby").attr("src", 'https://img.icons8.com/ios-filled/45/000000/ruby-programming-language.png')
         }).on("mouseout", function () {
             $(".icon-ruby").attr("src", 'https://img.icons8.com/color/48/000000/ruby-programming-language.png')
         })

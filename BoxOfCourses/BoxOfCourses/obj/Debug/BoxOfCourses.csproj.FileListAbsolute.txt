@@ -110,3 +110,4 @@ D:\IT - project\BoxOfCourses\BoxOfCourses\obj\Debug\BoxOfCourses.Migrations.init
 D:\IT - project\BoxOfCourses\BoxOfCourses\obj\Debug\BoxOfCourses.csproj.GenerateResource.cache
 D:\IT - project\BoxOfCourses\BoxOfCourses\obj\Debug\BoxOfCourses.Migrations.LanguagesAdded.resources
 D:\IT - project\BoxOfCourses\BoxOfCourses\obj\Debug\BoxOfCourses.Migrations.review.resources
+D:\IT - project\BoxOfCourses\BoxOfCourses\obj\Debug\BoxOfCourses.Migrations.datetimeadded.resources

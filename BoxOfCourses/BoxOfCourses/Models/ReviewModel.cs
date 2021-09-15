@@ -19,5 +19,7 @@ namespace BoxOfCourses.Models
         public string Comment { get; set; }
         [Required]
         public int ReviewValue { get; set; }
+
+        public string CurrentDate { get; set; }
     }
 }

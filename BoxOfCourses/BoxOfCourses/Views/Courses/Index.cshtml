@@ -108,14 +108,14 @@
                     <td class="buttons-td">
                         @if (User.IsInRole("Administrator"))
                         {
-                            @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-info editcourseButton" }) <span class="vertical-line-between">|</span>
+                           @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-info editcourseButton" }) <span class="vertical-line-between">|</span>
                         }
 
                         @Html.ActionLink("Take course", "Details", new { id = item.Id }, new { @class = " btn takecourseButton" })
 
                         @if (User.IsInRole("Administrator"))
                         {
-                            <span class="vertical-line-between">|</span> <button data-course-name="@item.Name" data-course-id="@item.Id" class="btn btn-danger js-delete">Delete</button>
+                            <span class="vertical-line-between">|</span> <button data-course-name="@item.Name" data-course-id="@item.Id" class="btn btn-danger js-delete"><i style="margin-left: -10px!important; padding-right: 5px; padding-top: 3px"class="glyphicon glyphicon-trash"></i>Delete</button>
                         }
                         @*<a href="/Courses/Details/@item.Id">Take course 1</a>*@
                     </td>
@@ -141,7 +141,7 @@
 <div> </div>
 
 <style>
-
+  
     .cont {
         padding-top: 20px;
     }
@@ -201,8 +201,8 @@
     th {
         color: #B0B0B0;
         text-transform: uppercase;
-        font-size: 13px;
-        letter-spacing: 4px;
+        font-size: 11px;
+        letter-spacing: 2px;
         text-align: center;
     }
 
@@ -399,8 +399,10 @@
         color: black;
     }
 
-    .js-delete{
-        color: black;
+    .js-delete {
+        width: 70px;
+        background-color: #922121;
+        font-weight: 600;
     }
     tr:hover{
         background-color: #303641!important;
@@ -422,6 +424,10 @@
         font-weight: 300;
     }
 
+    @*style entries info*@
+    #CoursesTable_info {
+        color: grey;
+    }
 </style>
 
 @section scripts{
@@ -435,6 +441,7 @@
             if (searchText === "c") {
                 searchText = searchText + "#";
             }
+            
             if (searchText.length > 0) {
                 $(this).scrollTop(330);
             }

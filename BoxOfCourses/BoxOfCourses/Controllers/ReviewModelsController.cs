@@ -56,7 +56,7 @@ namespace BoxOfCourses.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,UserName,Category,Comment,ReviewValue")] ReviewModel reviewModel)
+        public ActionResult Create([Bind(Include = "Id,UserName,Category,Comment,ReviewValue,CurrentDate")] ReviewModel reviewModel)
         {
             if (ModelState.IsValid)
             {
