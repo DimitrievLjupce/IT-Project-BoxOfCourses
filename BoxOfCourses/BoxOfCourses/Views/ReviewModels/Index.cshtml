@@ -6,9 +6,55 @@
 
 <div class="container cont-reviews-table" style="color: white; ">
 
-    <p style="color:white; font-size: 40px; font-weight: 700" class="heading-index-reviews">
-        Want to <span style="color: #5ABD64">share your opinion</span> with us? <a href="~/ReviewModels/Create">  <ion-icon style="color: orange; font-size: 30px; padding-top: 9px" name="duplicate"></ion-icon></a> 
-    </p>
+    <div class="row">
+        <div class="col-md-8">
+            <p style="color:white; font-size: 40px; font-weight: 700; padding-top: 30px;" class="heading-index-reviews;">
+                Want to <span style="color: #5ABD64">share your opinion</span> with us? <a href="~/ReviewModels/Create">  <ion-icon style="color: orange; font-size: 30px; padding-top: 9px" name="duplicate"></ion-icon></a>
+            </p>
+        </div>
+        <div class="col-md-4">
+            <div class="container-rating text-right">
+                <h6 style="font-size: 15px;"><span style="color: #5ABD64;">BoxOfCourses </span>overall rating</h6>
+                @{
+                    var list = Model.ToList();
+                    var numelems = list.Count;
+
+                    float averagerating = 0;
+                    float sum = 0;
+                    foreach (var item in list)
+                    {
+                        sum += item.ReviewValue;
+                    }
+
+                    averagerating = sum / numelems;
+
+                    float ratingImages = (float)Math.Round(averagerating, 2) * 100;
+                    float lastdigits = ratingImages % 100;
+                    float numStars = ratingImages % 1000;
+                    int numFinal = (int)numStars / 100;
+
+                    <h4 class="average-rating">@averagerating</h4>
+                    if (lastdigits >= 50)
+                    {
+                        numFinal += 1;
+                    }
+
+                    for (var i = 0; i < 5; i++)
+                    {
+                        if (i < numFinal)
+                        {
+                            <img class="colored-stars" style="width: 25px; height: 25px" src="~/Content/photos/whiteStar-2.png" />
+                        }
+                        else
+                        {
+                            <img style="width: 25px; height: 25px" src="~/Content/photos/whiteStar-2.png" />
+                        }
+                    }
+
+                }
+            </div>
+        </div>
+    </div>
     <div class="table-reviews-container">
         <table class="table table-reviews" id="ReviewsTable">
             <thead>
@@ -36,12 +82,12 @@
                 {
                     <tr>
                         <td>
-                             @Html.DisplayFor(modelItem => item.CurrentDate)
+                            @Html.DisplayFor(modelItem => item.CurrentDate)
                         </td>
-                        <td class="username-td" user-data="@item.UserName")>
+                        <td class="username-td" user-data="@item.UserName" )>
                             @{
                                 string[] temp = (item.UserName).Split('@');
-                               
+
                             }
                             @Html.DisplayFor(modelItem => temp[0])
                         </td>
@@ -62,7 +108,7 @@
                             @if (User.Identity.Name == item.UserName || User.Identity.Name == "administrator@gmail.com")
                             {
                                 @*@Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger" })*@
-                            <button data-course-id="@item.Id" class="btn btn-danger js-delete"><i style="padding-top: 2px;" class="glyphicon glyphicon-trash"></i> Delete</button>
+                                <button data-course-id="@item.Id" class="btn btn-danger js-delete"><i style="padding-top: 2px;" class="glyphicon glyphicon-trash"></i> Delete</button>
                             }
                         </td>
                     </tr>
@@ -71,6 +117,7 @@
         </table>
     </div>
 </div>
+
 <style>
     .colored-stars{
         background: url('/Content/photos/yellow-star.png');
@@ -136,6 +183,27 @@
     #ReviewsTable_info {
         color: grey;
     }
+
+    @*hide search field*@
+    #ReviewsTable_filter {
+        display: none !important;
+    }
+    .average-rating {
+        border: 0.5px solid #303641;
+        border-radius: 10px;
+       @* width: 80px;
+        height: 50px;*@
+        padding-top: 14px;
+        padding-left: 8px;
+        text-align: right!important;
+        width: 80px;
+        position: relative; left: 78%;
+        padding: 10px 10px 5px;
+    }
+
+        .average-rating:hover {
+            background-color: #303641;
+        }
 </style>
 
 @section scripts{
@@ -147,6 +215,24 @@
             });
 
             tempTable = table;
+
+            var rating = $(".average-rating").html();
+            var temp = new Array();
+            temp = rating.split(",");
+            var num = temp.join(".");
+
+            if (parseFloat(num) >= 4.5) {
+                $(".average-rating").css("color", "#5ABD64");
+                $(".average-rating").text($(".average-rating").text() + " " + "🎉")
+            } else if (parseFloat(num) >= 3.5 && parseFloat(num) <= 4.4) {
+                $(".average-rating").css("color", "#F86207");
+                $(".average-rating").text($(".average-rating").text() + " " + "😁")
+
+            } else {
+                $(".average-rating").css("color", "red");
+                $(".average-rating").text($(".average-rating").text() + " " + "👎")
+
+            }
         })
 
        
@@ -171,6 +257,7 @@
                             method: "GET",
                             success: function () {
                                 tempTable.row(button.parents("tr")).remove().draw();
+                               @* location.reload();*@
                             },
                             error: function (err) {
                                 console.log(err);

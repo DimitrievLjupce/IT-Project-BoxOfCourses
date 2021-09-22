@@ -17,7 +17,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2", id = "modelNameCreate" })
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", placeholder = "example. Java" } })
+                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control modelName", placeholder = "example. Java" } })
                     @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -39,7 +39,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.ImageURL, htmlAttributes: new { @class = "control-label col-md-2", id = "modelImageCreate" })
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.ImageURL, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.EditorFor(model => model.ImageURL, new { htmlAttributes = new { @class = "form-control modelImage" } })
                     @Html.ValidationMessageFor(model => model.ImageURL, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -47,7 +47,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.VideoURL, htmlAttributes: new { @class = "control-label col-md-2", id = "modelVideoCreate" })
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.VideoURL, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.EditorFor(model => model.VideoURL, new { htmlAttributes = new { @class = "form-control modelVideo" } })
                     @Html.ValidationMessageFor(model => model.VideoURL, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -62,7 +62,7 @@
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
                     <a href="~/Courses/Index" id="backToList" class="btn btn-warning">Back to the list</a>
-                    <input type="submit" value="Create" class="btn btn-success" style="color:black; width: 160px" />
+                    <input type="submit" value="Create" class="btn btn-success submitForm" style="color:black; width: 160px" />
                 </div>
             </div>
         </div>
@@ -78,6 +78,21 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+        $(window).on("load", function () {
+            $(".submitForm").prop("disabled", true);
+        })
+
+        $(window).keyup(function () {
+            if ($(".modelName").val() !== "" && $(".modelImage").val() !== "" && $(".modelVideo").val() !== "") {
+                $(".submitForm").prop("disabled", false);
+            } else {
+                $(".submitForm").prop("disabled", true);
+            }
+        })
+
+    </script>
 }
 
 <style>

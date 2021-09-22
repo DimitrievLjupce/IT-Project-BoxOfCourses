@@ -100,7 +100,7 @@
                         @Html.DisplayFor(modelItem => item.Level, new { @class = "course-level" })
                     </td>
                     <td class="text-center">
-                        <img class="image" style="width: 140px; max-width: 150px; max-height: 180px; height: 130px; padding: 5px" src="@Html.DisplayFor(modelItem => item.ImageURL)" />
+                        <img class="image" style="width: 150px; max-width: 150px; height: 110px; padding: 5px" src="@Html.DisplayFor(modelItem => item.ImageURL)" />
                     </td>
                     <td class="courseTypeCoulmn">
                         @Html.DisplayFor(modelItem => item.Type, new { @class = "modelType" })
@@ -108,14 +108,14 @@
                     <td class="buttons-td">
                         @if (User.IsInRole("Administrator"))
                         {
-                           @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-info editcourseButton" }) <span class="vertical-line-between">|</span>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-info editcourseButton" }) <span class="vertical-line-between">|</span>
                         }
 
                         @Html.ActionLink("Take course", "Details", new { id = item.Id }, new { @class = " btn takecourseButton" })
 
                         @if (User.IsInRole("Administrator"))
                         {
-                            <span class="vertical-line-between">|</span> <button data-course-name="@item.Name" data-course-id="@item.Id" class="btn btn-danger js-delete"><i style="margin-left: -10px!important; padding-right: 5px; padding-top: 3px"class="glyphicon glyphicon-trash"></i>Delete</button>
+                            <span class="vertical-line-between">|</span> <button data-course-name="@item.Name" data-course-id="@item.Id" class="btn btn-danger js-delete"><i style="margin-left: -10px!important; padding-right: 5px; padding-top: 3px" class="glyphicon glyphicon-trash"></i>Delete</button>
                         }
                         @*<a href="/Courses/Details/@item.Id">Take course 1</a>*@
                     </td>
@@ -127,6 +127,72 @@
     @{
         Html.RenderPartial("RecentlyAddedCourses");
     }
+
+        <div>
+            @{
+                var courseJavaScript = "JavaScript";
+                var listOfCourses = Model.ToList();
+                var counterJavaScript = 0;
+                var counterReact = 0;
+                var counterAngular = 0;
+                var counterCsharp = 0;
+                foreach (var item in listOfCourses)
+                {
+                    if (item.Name.Contains(courseJavaScript))
+                    {
+                        counterJavaScript++;
+                    }
+                    if (item.Name.Contains("React"))
+                    {
+                        counterReact++;
+                    }
+                    if (item.Name.Contains("Angular"))
+                    {
+                        counterAngular++;
+                    }
+                    if (item.Name.Contains("C#"))
+                    {
+                        counterCsharp++;
+                    }
+                }
+            }
+        </div>
+        <div class="row">
+            <h1 class="most-viewed">Popular techonologies to learn now</h1>
+            <div class="col-md-3 content">
+                <p class="path">PATH</p>
+                <p class="path-name">JavaScript</p>
+                <p class="how-many-courses">@counterJavaScript courses</p>
+                <a href="/Courses?JavaScript"class="get-skill-iq">Get your Skill IQ 🟣</a>
+                <img class="img-responsive most-viewed-course-image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/2048px-Unofficial_JavaScript_logo_2.svg.png" />
+            </div>
+            <div class="col-md-3 content">
+                <p class="path">PATH</p>
+                <p class="path-name">React</p>
+                <p class="how-many-courses">@counterReact courses</p>
+                <a href="/Courses?React"class="get-skill-iq">Get your Skill IQ 🟣</a>
+                <img class="img-responsive most-viewed-course-image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1280px-React-icon.svg.png" />
+            </div>
+          
+        </div>
+
+        <div class="row second-row-courses">
+            <div class="col-md-3 content">
+                <p class="path">PATH</p>
+                <p class="path-name">Angular</p>
+                <p class="how-many-courses">@counterAngular courses</p>
+                <a href="/Courses?Angular" class="get-skill-iq">Get your Skill IQ 🟣</a>
+                <img class="img-responsive most-viewed-course-image" src="https://cdn.worldvectorlogo.com/logos/angular-icon.svg" />
+            </div>
+            <div class="col-md-3 content">
+                <p class="path">PATH</p>
+                <p class="path-name">C#</p>
+                <p class="how-many-courses">@counterCsharp courses</p>
+                <a href="/Courses?c#" class="get-skill-iq">Get your Skill IQ 🟣</a>
+                <img class="img-responsive most-viewed-course-image" src="https://static.cdnlogo.com/logos/c/27/c.svg" />
+            </div>
+        </div>
+    
 </div>
 
 <div class="container-fluid">
@@ -138,10 +204,75 @@
     </div>
 </div>
 
-<div> </div>
-
 <style>
-  
+
+    @*od tuka*@
+    .content {
+        position: relative;
+        height: 180px;
+        border-radius: 15px;
+        background-color: #303641;
+        display: inline-block;
+        margin-left: 20px;
+        margin-top: 15px;
+    }
+    .content:hover{
+        background-color: #363d4a;
+    }
+    .content img {
+        position: absolute;
+        top: 20px;
+        vertical-align: middle;
+        right: 10px;
+        width: 80px;
+        height: 70px;
+    }
+    .path {
+        color: #C126EA;
+        padding-top: 30px!important;
+        font-weight: 800;
+        letter-spacing: 2px;
+        font-size: 10px;
+    }
+    .path-name{
+        font-size: 17px;
+        color: grey;
+    }
+
+    .get-skill-iq{
+        color: white;
+        font-size: 15px;
+        font-weight: 800;
+    }
+
+    .get-skill-iq:hover{
+        text-decoration: none;
+        color: #A1A1A1;
+    }
+    .how-many-courses{
+        color: gray;
+    }
+
+
+    .path, .path-name, .get-skill-iq, .how-many-courses {
+        margin-left: 20px;
+    }
+
+    .second-row-courses{
+        margin-bottom: 80px;
+    }
+
+    @*.new-technologies-text{
+        width: 300px;
+        height: 100px;
+        position: relative;
+        left: 70%;
+        top: 0!important;
+        font-weight: 800;
+        font-size: 20px;
+    }*@
+
+    @*bdo tuka*@
     .cont {
         padding-top: 20px;
     }
@@ -219,6 +350,7 @@
         color: grey;
         font-size: 15px;
         vertical-align: middle !important;
+        width: 120px;
     }
 
     .courseTypeCoulmn {
@@ -428,6 +560,14 @@
     #CoursesTable_info {
         color: grey;
     }
+
+    .most-viewed {
+        color: white;
+        font-weight: 800;
+        margin-top: 20px;
+        margin-bottom: 30px;
+        font-size: 16px;
+    }
 </style>
 
 @section scripts{
@@ -441,7 +581,7 @@
             if (searchText === "c") {
                 searchText = searchText + "#";
             }
-            
+
             if (searchText.length > 0) {
                 $(this).scrollTop(330);
             }
@@ -451,7 +591,6 @@
             //placeholder for input type search here, instead of changing in jquery table props.
             $("input[type='search']").attr('placeholder', 'Search stuff.')
 
-
         });
 
         $(window).on("load", function () {
@@ -459,7 +598,7 @@
                 url: "/Courses/RecentlyAddedCourses",
                 method: "GET"
             })
-        }) 
+        })
 
         //ajax call for deleting specific course from table
         $("#CoursesTable .js-delete").on("click", function () {
