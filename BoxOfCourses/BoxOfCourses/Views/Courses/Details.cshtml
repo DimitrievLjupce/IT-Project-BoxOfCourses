@@ -16,16 +16,11 @@
             <a style="color:black!important" href="~/Courses/Index" id="" class="btn btn-warning">Back to the list</a>
             @if (User.IsInRole("Administrator"))
             {
-                @*  | @Html.ActionLink("Edit this course", "Edit", new { id = Model.Id }, new { @class = "btn btn-info", @style = "color:black!important;" })*@
                 @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class = "btn btn-info editcourseButton", @style = "color:black!important;" }) 
             }
         </div>
     </div>
 </div>
-
-@section scripts{
-   
-}
 
 <style>
     iframe {
@@ -42,17 +37,18 @@
     }
 
     .take-course-heading {
-        font-size: 35px;
+        font-size: 30px;
         color: #C126EA;
+        font-weight: 700;
     }
 
     .take-course-heading-name {
-        font-size: 50px;
-        color: #5ABD64;
+        font-size: 35px;
+        color: #B1B1B1;
     }
 
     .hr-take-course-heading {
-        border: 0.5px solid #303641;
+        border: 0.5px solid orange;
     }
 
     .iframe-container {
@@ -69,5 +65,4 @@
         width: 100%;
         height: 100%;
     }
-        
 </style>

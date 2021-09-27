@@ -26,14 +26,14 @@
                         sum += item.ReviewValue;
                     }
 
-                    averagerating = sum / numelems;
+                    averagerating = (sum / numelems);
 
                     float ratingImages = (float)Math.Round(averagerating, 2) * 100;
                     float lastdigits = ratingImages % 100;
                     float numStars = ratingImages % 1000;
-                    int numFinal = (int)numStars / 100;
 
-                    <h4 class="average-rating">@averagerating</h4>
+                    int numFinal = (int)numStars / 100;
+                     <h4 class="average-rating">@string.Format("{0:n2}", averagerating)</h4>
                     if (lastdigits >= 50)
                     {
                         numFinal += 1;
@@ -50,7 +50,6 @@
                             <img style="width: 25px; height: 25px" src="~/Content/photos/whiteStar-2.png" />
                         }
                     }
-
                 }
             </div>
         </div>
@@ -196,14 +195,14 @@
         padding-top: 14px;
         padding-left: 8px;
         text-align: right!important;
-        width: 80px;
+        width: 100px;
         position: relative; left: 78%;
         padding: 10px 10px 5px;
     }
-
-        .average-rating:hover {
-            background-color: #303641;
-        }
+    
+    .average-rating:hover {
+       background-color: #303641;
+    }
 </style>
 
 @section scripts{
@@ -221,17 +220,16 @@
             temp = rating.split(",");
             var num = temp.join(".");
 
+
             if (parseFloat(num) >= 4.5) {
                 $(".average-rating").css("color", "#5ABD64");
                 $(".average-rating").text($(".average-rating").text() + " " + "🎉")
             } else if (parseFloat(num) >= 3.5 && parseFloat(num) <= 4.4) {
                 $(".average-rating").css("color", "#F86207");
                 $(".average-rating").text($(".average-rating").text() + " " + "😁")
-
             } else {
                 $(".average-rating").css("color", "red");
                 $(".average-rating").text($(".average-rating").text() + " " + "👎")
-
             }
         })
 

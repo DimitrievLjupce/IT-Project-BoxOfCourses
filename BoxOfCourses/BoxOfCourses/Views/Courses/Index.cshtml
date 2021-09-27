@@ -117,7 +117,6 @@
                         {
                             <span class="vertical-line-between">|</span> <button data-course-name="@item.Name" data-course-id="@item.Id" class="btn btn-danger js-delete"><i style="margin-left: -10px!important; padding-right: 5px; padding-top: 3px" class="glyphicon glyphicon-trash"></i>Delete</button>
                         }
-                        @*<a href="/Courses/Details/@item.Id">Take course 1</a>*@
                     </td>
                 </tr>
             }
@@ -127,7 +126,6 @@
     @{
         Html.RenderPartial("RecentlyAddedCourses");
     }
-
         <div>
             @{
                 var courseJavaScript = "JavaScript";
@@ -173,7 +171,6 @@
                 <a href="/Courses?React"class="get-skill-iq">Get your Skill IQ 🟣</a>
                 <img class="img-responsive most-viewed-course-image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1280px-React-icon.svg.png" />
             </div>
-          
         </div>
 
         <div class="row second-row-courses">
@@ -192,7 +189,6 @@
                 <img class="img-responsive most-viewed-course-image" src="https://static.cdnlogo.com/logos/c/27/c.svg" />
             </div>
         </div>
-    
 </div>
 
 <div class="container-fluid">
@@ -206,73 +202,6 @@
 
 <style>
 
-    @*od tuka*@
-    .content {
-        position: relative;
-        height: 180px;
-        border-radius: 15px;
-        background-color: #303641;
-        display: inline-block;
-        margin-left: 20px;
-        margin-top: 15px;
-    }
-    .content:hover{
-        background-color: #363d4a;
-    }
-    .content img {
-        position: absolute;
-        top: 20px;
-        vertical-align: middle;
-        right: 10px;
-        width: 80px;
-        height: 70px;
-    }
-    .path {
-        color: #C126EA;
-        padding-top: 30px!important;
-        font-weight: 800;
-        letter-spacing: 2px;
-        font-size: 10px;
-    }
-    .path-name{
-        font-size: 17px;
-        color: grey;
-    }
-
-    .get-skill-iq{
-        color: white;
-        font-size: 15px;
-        font-weight: 800;
-    }
-
-    .get-skill-iq:hover{
-        text-decoration: none;
-        color: #A1A1A1;
-    }
-    .how-many-courses{
-        color: gray;
-    }
-
-
-    .path, .path-name, .get-skill-iq, .how-many-courses {
-        margin-left: 20px;
-    }
-
-    .second-row-courses{
-        margin-bottom: 80px;
-    }
-
-    @*.new-technologies-text{
-        width: 300px;
-        height: 100px;
-        position: relative;
-        left: 70%;
-        top: 0!important;
-        font-weight: 800;
-        font-size: 20px;
-    }*@
-
-    @*bdo tuka*@
     .cont {
         padding-top: 20px;
     }
@@ -375,13 +304,13 @@
         text-decoration: none;
         font-weight: 500;
     }
-        .takecourseButton:hover {
-            color: #C126EA;
-            text-decoration: none;
-            box-shadow: 0 0 5px #C126EA, 0 0 25px #C126EA, 0 0 50px #C126EA, 0 0 200px #C126EA;
-            -webkit-box-reflect: below 1px linear-gradient(transparent, #0005);
-        }
-
+    
+    .takecourseButton:hover {
+        color: #C126EA;
+        text-decoration: none;
+        box-shadow: 0 0 5px #C126EA, 0 0 25px #C126EA, 0 0 50px #C126EA, 0 0 200px #C126EA;
+        -webkit-box-reflect: below 1px linear-gradient(transparent, #0005);
+    }
 
     .editcourseButton {
         color: black;
@@ -412,9 +341,6 @@
         margin-bottom: 20px;
         color: black;
     }
-
-
-    @*od tuka*@
 
     .btnn:link,
     .btnn:visited {
@@ -487,7 +413,7 @@
     }
 
 
-    @*tuka za social links*@
+    @*style social links*@
     .icon-bar-social-links-index-table {
         position: fixed;
         bottom: 30%;
@@ -567,6 +493,67 @@
         margin-top: 20px;
         margin-bottom: 30px;
         font-size: 16px;
+    }
+
+
+    @*style popular courses section*@ 
+    .content {
+        position: relative;
+        height: 180px;
+        border-radius: 15px;
+        background-color: #303641;
+        display: inline-block;
+        margin-left: 20px;
+        margin-top: 15px;
+    }
+
+    .content:hover {
+        background-color: #363d4a;
+    }
+
+    .content img {
+        position: absolute;
+        top: 20px;
+        vertical-align: middle;
+        right: 10px;
+        width: 80px;
+        height: 70px;
+    }
+
+    .path {
+        color: #C126EA;
+        padding-top: 30px !important;
+        font-weight: 800;
+        letter-spacing: 2px;
+        font-size: 10px;
+    }
+
+    .path-name {
+        font-size: 17px;
+        color: grey;
+    }
+
+    .get-skill-iq {
+        color: white;
+        font-size: 15px;
+        font-weight: 800;
+    }
+
+    .get-skill-iq:hover {
+        text-decoration: none;
+        color: #A1A1A1;
+     }
+
+    .how-many-courses {
+        color: gray;
+    }
+
+    .path, .path-name, .get-skill-iq, .how-many-courses {
+        margin-left: 20px;
+    }
+
+    .second-row-courses {
+        margin-bottom: 80px;
     }
 </style>
 

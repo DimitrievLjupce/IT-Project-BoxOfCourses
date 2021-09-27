@@ -67,12 +67,6 @@
             </div>
         </div>
     }
-
-
-    <!--<div>-->
-    @*@Html.ActionLink("Back to List", "Index")*@
-    <!--<a href="~/Courses/Index" id="backToList" class="btn btn-warning ">Back to the list of Courses</a>
-    </div>-->
 </div>
 
 
@@ -80,6 +74,7 @@
     @Scripts.Render("~/bundles/jqueryval")
 
     <script>
+        //all fields must be filled to create specific course
         $(window).on("load", function () {
             $(".submitForm").prop("disabled", true);
         })
@@ -91,7 +86,6 @@
                 $(".submitForm").prop("disabled", true);
             }
         })
-
     </script>
 }
 
@@ -162,5 +156,4 @@
         font-size: 15px;
     }
 
-       
 </style>

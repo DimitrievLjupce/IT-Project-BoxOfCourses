@@ -79,10 +79,7 @@
                 <img class="img-responsive gif-rocket" src="~/Content/photos/3WyW.gif"/>
             </div>
         </div> @*row ends here*@
-
     }
-
-    
 </div>
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
@@ -138,13 +135,7 @@
                 mins = '0' + mins;
             }
          
-           @* var hour = currDate.getHours();
-            if (hour == "0") {
-                hour = "00";
-            }*@
-
             formatedDate = month + '.' + day + '.' + year + " " + currDate.getHours() + ":" + mins;
-            
 
             console.log(formatedDate)
             $(".getDate").val(formatedDate);

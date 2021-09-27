@@ -8,15 +8,12 @@
 <div class="container cont">
     <h2 class="editcourse-heading">Edit <span class="editcourse-heading-name">@Model.Name </span>course</h2>
 
-    @*Uncomment this - so Duki*@
-    @*<label for="cars">Choose a car:</label>*@
-
     @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
 
 
-        @*Uncomment this - so Duki*@
+        @*Uncomment this - next feature*@
         @*@Html.DropDownList("ListItems", new SelectList(Model.ListItems.Items,
                                                "Value", "Text", Model.ListItems.SelectedValue))
 
@@ -43,13 +40,6 @@
                         @Html.ValidationMessageFor(model => model.Category, "", new { @class = "text-danger" })
                     </div>
                 </div>
-
-               @* <div class="form-group">
-                    @Html.LabelFor(model => model.Category, htmlAttributes: new { @class = "control-label col-md-2", id = "modelCategoryCreate" })
-                    <div class="col-md-10">
-                        @Html.DropDownListFor(model => model.Category, new SelectList(Model.Categories), new { @class = "form-control" })
-                    </div>
-                </div>*@
 
                 <div class="form-group">
                     @Html.LabelFor(model => model.Level, htmlAttributes: new { @class = "control-label col-md-2", id = "modelLevelEdit" })
@@ -90,18 +80,13 @@
                     </div>
                 </div>
 
-                @*<img style="max-width: 150px; max-height: 120px" src="@Html.DisplayFor(modelItem => item.ImageURL)" />*@
             </div>
+
             <div class="col-md-4">
                 <img src="@Model.ImageURL" class="img-responsive" style="width: 380px; height: 320px; " />
             </div>
-
         </div>
     }
-
-    @*<div>
-         @Html.ActionLink("Back to List", "Index")
-    </div>*@
 </div>
 
 @section Scripts {

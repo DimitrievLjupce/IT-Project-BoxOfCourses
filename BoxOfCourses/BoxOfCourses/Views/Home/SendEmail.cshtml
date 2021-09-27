@@ -59,8 +59,6 @@
                                     <span style="color: #5ABD64; font-size: 15px;" class="file-name"></span>
                                 </div>
                                 <small style="color: white;">*<span style="color: #C126EA;">optional</span></small>
-                                @*@Html.TextBoxFor(model => model.Attachment, new { type = "file", @class = "modelAttachFile", id = "modelAttachment" }) <small style="color: white;">*<span style="color: #C126EA;">optional</span></small>*@
-                                @* @Html.ValidationMessageFor(model => model.Subject, "", new { @class = "text-danger" })*@
                             </div>
                         </div>
 
@@ -82,9 +80,6 @@
 
                         <div class="form-group">
                             <div class="col-md-10">
-                               @* <div class="form-group submit-form-field">
-                                    <input id="submitEmailForm" type="submit" value="Send" class="btn btn-success text-center" style="color:black; width: 160px" />
-                                </div>*@
                                  <input  id="submitEmailForm" type="submit" value="Send" class="btn custom-send-button"/>
                             </div>
                         </div>
@@ -143,7 +138,7 @@
             if (currentMessage === "Your email has been sent!") {
                 Swal.fire({
                     icon: 'success',
-                    title: 'Your email has been sent!',
+                    title: 'Your email has been sent! 😄',
                     showConfirmButton: false,
                     timer: 2500
                 })
@@ -154,11 +149,11 @@
             }
 
             var messageError = $(".message-error").attr("msgerror");
-            if (messageError === "Something went wrong, make sure you entered valid google email!") {
+            if (messageError === "Try again but make sure you entered valid google email!") {
                 Swal.fire({
                     icon: 'error',
-                    title: 'Oops...',
-                    text: 'Something went wrong, make sure you entered valid google email!'
+                    title: 'Oops... 😕',
+                    text: 'Something went wrong! Try again and make sure you entered valid google email!'
                 })
             }
         })
@@ -441,6 +436,8 @@
             font-size: 20px;
         }
         .swal2-confirm{
-            width: 100px;
+            width: 150px;
+            height: 50px;
+            font-size: 2em!important;
         }
 </style>

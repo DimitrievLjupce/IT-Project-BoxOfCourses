@@ -74,7 +74,7 @@ namespace BoxOfCourses.Controllers
                         }
                         catch (Exception e)
                         {
-                            var msg = "Something went wrong, make sure you entered valid google email!";
+                            var msg = "Try again but make sure you entered valid google email!";
                             ViewBag.errorMsg = msg;
                         }
                     }
